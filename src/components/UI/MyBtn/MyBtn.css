@@ -1,0 +1,11 @@
+.MyBtn{
+    width: 160px;
+    height: 58px;
+    font-size: 21px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 22px;
+}
+.MyBtn:hover{
+    cursor: pointer;
+}

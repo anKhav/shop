@@ -1,6 +1,6 @@
 # E-commerce SPA
 To start the project:
-1. Clone repo by Git Bash writing https://github.com/anKhav/shop
+1. Clone repo by Git Bash writing ```git clone https://github.com/anKhav/shop```
 2. Install node_modules by ```npm i```
 3. Start the project by ```npm start```
 

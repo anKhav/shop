@@ -1,0 +1,178 @@
+.nav{
+  &__link{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    &:not(:last-child){
+      margin-right: 10px;
+    }
+  }
+}
+.Home{
+  width: 100%;
+  height: 100%;
+}
+.hero{
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-size: cover;
+  &__content{
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__title{
+    width: 500px;
+    font-size: 48px;
+    line-height: 48px;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  &__btn{
+    background-color: transparent;
+    color: white;
+    border: 3px solid white;
+    transition: .4s;
+    &:hover{
+      background-color: white;
+      transition: .4s;
+      color: black;
+    }
+  }
+}
+.right-nav__icon{
+  &:not(:last-child){
+    margin-right: 25px;
+  }
+  img{
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.new-products{
+  &__content{
+    flex-wrap: wrap;
+  }
+}
+
+.benefits{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 211px;
+  .benefit{
+    font-size: 16px;
+    &:not(:last-child){
+      margin-right: 82px;
+    }
+    &__title{
+      line-height: 16px;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    &__content{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      margin-left: 22px;
+    }
+  }
+}
+.promos{
+  display: flex;
+  height: 430px;
+  .promo{
+    &__content{
+      width: 60%;
+    }
+    &__title{
+      font-size: 32px;
+      line-height: 48px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    &__descr{
+      font-size: 18px;
+      line-height: 130%;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    &__btn{
+      font-weight: normal;
+    }
+  }
+}
+
+.top-sellers{
+  &__btn{
+    background-color: #024E82;
+    border-color: #024E82;
+    color: white;
+    font-weight: normal;
+    margin-top: 70px;
+  }
+}
+
+.footer{
+  margin-bottom: 30px;
+  &__wrapper{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+  &__list{
+    li{
+      font-size: 16px;
+      line-height: 28px;
+    }
+    a{}
+  }
+  &__title{
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+  }
+  &__input{
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    outline: none;
+    width: 200px;
+  }
+  .input__wrapper{
+    position: relative;
+    .arr{
+      position: absolute;
+      right: -35px;
+      top: 50%;
+      transform: translateY(-50%);
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .rights{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__main{}
+    &__payments{}
+    &__text{
+      font-size: 14px;
+      line-height: 28px;
+    }
+  }
+}

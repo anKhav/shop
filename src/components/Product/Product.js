@@ -1,13 +1,14 @@
 import React from 'react';
 import './Product.scss'
+import {Link} from "react-router-dom";
 
-const Product = ({src, alt, name, price}) => {
+const Product = ({src, alt, name, price, id}) => {
     return (
-        <div className="product">
-            <img src={src} alt={alt} className="product__img"/>
-            <div className="product__name">{name}</div>
-            <div className="product__price">${price}</div>
-        </div>
+        <Link id={id} className='product' to={`/products/${id}`} onClick={(e) => console.log(e)} >
+                <img src={src} alt={alt} className="product__img"/>
+                <div className="product__name">{name}</div>
+                <div className="product__price">${price}</div>
+        </Link>
     );
 };
 

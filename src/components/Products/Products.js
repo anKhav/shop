@@ -16,6 +16,7 @@ const Products = ({className, newarr, best}) => {
                                 alt={product.name}
                                 name={product.name}
                                 price={product.price}
+                                id={product.id}
                             />
                     })) :
                     false
@@ -31,6 +32,7 @@ const Products = ({className, newarr, best}) => {
                                 alt={product.name}
                                 name={product.name}
                                 price={product.price}
+                                id={product.id}
                             />
                         })) :
                     false

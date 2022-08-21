@@ -7,6 +7,9 @@
 }
 
 //-- COMMON STYLES--//
+textarea{
+    resize: none;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -35,6 +38,11 @@
 .about{
     &__header{
         background: url("../public/img/about-bg.jpg") center no-repeat;
+    }
+}
+.contact{
+    &__header{
+        background: url("../public/img/contact-bg.jpg");
     }
 }
 

@@ -1,0 +1,139 @@
+.About{
+}
+.about{
+  &__header{
+    height: 350px;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+  &__title{
+    font-size: 48px;
+    line-height: 48px;
+    text-transform: uppercase;
+    color:white;
+    margin-left: 40px;
+    margin-bottom: 40px;
+  }
+}
+
+.featured{
+  margin-top: 90px;
+  &__content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .feature{
+    max-height: 600px;
+    max-width: 600px;
+    position: relative;
+    &:not(:last-child){
+      margin-right: 20px;
+    }
+    &__img{}
+    &__btn{
+      border-radius: 25px;
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+     border: none;
+      color: #024E82;
+    }
+  }
+}
+
+
+.founders{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  &__title{
+    font-size: 36px;
+    line-height: 48px;
+    color: inherit;
+    text-align: center;
+    margin-bottom: 115px;
+  }
+  &__content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .founder{
+      display: flex;
+      flex-direction: column;
+      &:not(:last-child){
+        margin-right: 20px;
+      }
+      &__img{
+        max-width: 295px;
+        max-height: 280px;
+        margin-bottom: 30px;
+      }
+      &__name{
+        font-size: 21px;
+        font-weight: bold;
+        color: inherit;
+      }
+    }
+  }
+}
+
+.testimonials{
+  margin-top: 100px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__title{
+    font-size: 36px;
+    line-height: 48px;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  &__content{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .testimonial{
+      display: flex;
+      align-items: center;
+      &:not(:last-child){
+        margin-bottom: 150px;
+      }
+      &__img{
+        width: 210px;
+        height: 210px;
+        border-radius: 100%;
+        img{}
+      }
+      &__wrapper{
+        margin-left: 50px;
+      }
+      &__quotes{
+        img{}
+      }
+      &__text{
+        font-size: 24px;
+        line-height: 36px;
+        color: #555555;
+        margin-top: 10px;
+        margin-bottom: 30px;
+      }
+      &__author{
+        font-size: 21px;
+        color: inherit;
+      }
+    }
+  }
+}

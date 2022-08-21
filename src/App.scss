@@ -32,3 +32,12 @@
 .hero{
     background: url("../public/img/img_bg.jpg") center no-repeat;
 }
+.about{
+    &__header{
+        background: url("../public/img/about-bg.jpg") center no-repeat;
+    }
+}
+
+.active{
+    color: #024E82;
+}

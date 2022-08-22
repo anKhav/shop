@@ -8,6 +8,7 @@ export const ProductsData = [
         price:49.00,
         best:true,
         new:true,
+        rating:3,
     },
     {
         id:uuidv4(),
@@ -16,6 +17,7 @@ export const ProductsData = [
         price:49.00,
         best:false,
         new:true,
+        rating:2,
     },
     {
         id:uuidv4(),
@@ -24,6 +26,7 @@ export const ProductsData = [
         price:49.00,
         best:false,
         new:true,
+        rating:1,
     },
     {
         id:uuidv4(),
@@ -32,6 +35,7 @@ export const ProductsData = [
         price:69.00,
         best:true,
         new:false,
+        rating:2,
     },
     {
         id:uuidv4(),
@@ -40,6 +44,7 @@ export const ProductsData = [
         price:19.00,
         best:true,
         new:false,
+        rating:1,
     },
     {
         id:uuidv4(),
@@ -48,5 +53,6 @@ export const ProductsData = [
         price:29.00,
         best:false,
         new:true,
+        rating:5,
     },
 ]

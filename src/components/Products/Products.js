@@ -17,6 +17,7 @@ const Products = ({className, newarr, best}) => {
                                 name={product.name}
                                 price={product.price}
                                 id={product.id}
+                                rating={product.rating}
                             />
                     })) :
                     false
@@ -33,6 +34,7 @@ const Products = ({className, newarr, best}) => {
                                 name={product.name}
                                 price={product.price}
                                 id={product.id}
+                                rating={product.rating}
                             />
                         })) :
                     false
@@ -42,13 +44,4 @@ const Products = ({className, newarr, best}) => {
 };
 
 export default Products;
-// ProductsData.filter((product) => {
-//     return product.new === true
-// }).map(product => {
-//     return <Product
-//         src={product.img}
-//         alt={product.name}
-//         name={product.name}
-//         price={product.price}
-//     />
-// })
+

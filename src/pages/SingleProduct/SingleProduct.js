@@ -1,6 +1,7 @@
 import React from 'react';
 import {ProductsData} from "../../data/data";
 import {useParams} from "react-router-dom";
+import Rating from '../../components/Rating/Rating'
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 
 import './SingleProduct.scss'
@@ -8,7 +9,6 @@ import './SingleProduct.scss'
 const SingleProduct = () => {
     const {id} = useParams()
     const equalIdProduct = ProductsData.find(product => product.id === id)
-    console.log(equalIdProduct);
     return (
         <section className="SingleProduct">
             <div className="section-inner product">
@@ -20,7 +20,7 @@ const SingleProduct = () => {
                         <h2 className="product__title">
                             {equalIdProduct.name}
                         </h2>
-                        <div className="product__rating"></div>
+                        <Rating rating={equalIdProduct.rating}/>
                         <span className="product__price">${equalIdProduct.price}</span>
                         <p className="product__descr">
                             A classic t-shirt never goes out of style. This is our most premium collection of shirt.

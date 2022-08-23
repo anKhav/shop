@@ -35,6 +35,7 @@ const Products = ({className, newarr, best}) => {
                                 price={product.price}
                                 id={product.id}
                                 rating={product.rating}
+                                sizes={product.sizes}
                             />
                         })) :
                     false

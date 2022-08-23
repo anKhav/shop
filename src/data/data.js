@@ -9,6 +9,7 @@ export const ProductsData = [
         best:true,
         new:true,
         rating:3,
+        sizes:['L','S','XS']
     },
     {
         id:uuidv4(),
@@ -18,6 +19,7 @@ export const ProductsData = [
         best:false,
         new:true,
         rating:2,
+        sizes:['L','S','XS']
     },
     {
         id:uuidv4(),
@@ -27,6 +29,7 @@ export const ProductsData = [
         best:false,
         new:true,
         rating:1,
+        sizes:['L','S','XS']
     },
     {
         id:uuidv4(),
@@ -36,6 +39,7 @@ export const ProductsData = [
         best:true,
         new:false,
         rating:2,
+        sizes:['L','S','XS']
     },
     {
         id:uuidv4(),
@@ -45,6 +49,7 @@ export const ProductsData = [
         best:true,
         new:false,
         rating:1,
+        sizes:['XXXL','XS']
     },
     {
         id:uuidv4(),
@@ -54,5 +59,6 @@ export const ProductsData = [
         best:false,
         new:true,
         rating:5,
+        sizes:['XL','S','XS']
     },
 ]

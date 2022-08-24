@@ -3,10 +3,14 @@ import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import Benefit from "../../components/Benefit/Benefit";
 import Promo from "../../components/Promo/Promo";
 import Products from "../../components/Products/Products";
+import {useSelector} from "react-redux";
+
 
 import './Home.scss'
 
 const Home = () => {
+    const products = useSelector(state => state.products)
+    console.log(products)
     return (
         <div className='Home'>
             <section className='section-outer'>

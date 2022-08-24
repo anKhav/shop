@@ -1,64 +1,81 @@
-import { v4 as uuidv4 } from 'uuid';
 
 export const ProductsData = [
     {
-        id:uuidv4(),
+        id:1,
         img:'/img/blueShirt.jpg',
         name:'Blue Plain Shirt',
         price:49.00,
         best:true,
         new:true,
         rating:3,
-        sizes:['L','S','XS']
+        sizes:['L','S','XS'],
+        categories:['Man', 'Shirt', 'Casual'],
+        tags:['Modern', 'Design', 'Cotton'],
+        isCart:false
     },
     {
-        id:uuidv4(),
+        id:2,
         img:'/img/blueShirt.jpg',
         name:'Blue Plain Shirt',
         price:49.00,
         best:false,
         new:true,
         rating:2,
-        sizes:['L','S','XS']
+        sizes:['L','S','XS'],
+        categories:['Woman', 'Polo', 'Casual'],
+        tags:['Modern', 'Design', 'Cotton'],
+        isCart:false
     },
     {
-        id:uuidv4(),
+        id:3,
         img:'/img/blueShirt.jpg',
         name:'Blue Plain Shirt',
         price:49.00,
         best:false,
         new:true,
         rating:1,
-        sizes:['L','S','XS']
+        sizes:['L','S','XS'],
+        categories:['Woman', 'Polo', 'Casual'],
+        tags:['Modern', 'Design', 'Cotton'],
+        isCart:false
     },
     {
-        id:uuidv4(),
+        id:4,
         img:'/img/jeansJacket.jpg',
         name:'Denim Jacket',
         price:69.00,
         best:true,
         new:false,
         rating:2,
-        sizes:['L','S','XS']
+        sizes:['L','S','XS'],
+        categories:['Woman', 'Jacket', 'Casual'],
+        tags:['Modern', 'Design', 'Denim'],
+        isCart:false
     },
     {
-        id:uuidv4(),
+        id:5,
         img:'/img/outcast.jpg',
         name:'Outcast T-Shirt',
         price:19.00,
         best:true,
         new:false,
         rating:1,
-        sizes:['XXXL','XS']
+        sizes:['XXXL','XS'],
+        categories:['Man', 'T-Shirt', 'Casual'],
+        tags:['Modern', 'Design', 'Cotton'],
+        isCart:false
     },
     {
-        id:uuidv4(),
+        id:6,
         img:'/img/poloPlain.jpg',
         name:'Polo Plain Shirt',
         price:29.00,
         best:false,
         new:true,
         rating:5,
-        sizes:['XL','S','XS']
+        sizes:['XL','S','XS'],
+        categories:['Man', 'Polo', 'Casual'],
+        tags:['Modern', 'Design', 'Cotton'],
+        isCart:false
     },
 ]

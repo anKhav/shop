@@ -1,9 +1,17 @@
 import {createSlice} from "@reduxjs/toolkit";
 
 const initialState = {
+    id:null,
     img:'',
     name:'',
-    price:''
+    price:null,
+    best:false,
+    new:false,
+    rating:null,
+    sizes:[],
+    categories:[],
+    tags:[],
+    isCart:false
 }
 
 const productSlice = createSlice({
@@ -15,3 +23,5 @@ const productSlice = createSlice({
         }
     }
 })
+export const {getProduct} = productSlice.actions
+export default productSlice.reducer

@@ -1,13 +1,15 @@
 import React from 'react';
-import {ProductsData} from "../../data/data";
 import Product from "../Product/Product";
+import {useSelector} from "react-redux";
 
 const Products = ({className, newarr, best}) => {
+    const products = useSelector(state => state.products)
+    console.log(products)
     return (
         <div className={className}>
             {
                 newarr ?
-                    (ProductsData.filter((product) => {
+                    (products.filter((product) => {
                         return product.new === true})
                         .map(product => {
                             return <Product
@@ -18,13 +20,14 @@ const Products = ({className, newarr, best}) => {
                                 price={product.price}
                                 id={product.id}
                                 rating={product.rating}
+                                inCart={product.inCart}
                             />
                     })) :
                     false
             }
             {
                 best ?
-                    (ProductsData.filter((product) => {
+                    (products.filter((product) => {
                         return product.best === true})
                         .map(product => {
                             return <Product
@@ -36,6 +39,7 @@ const Products = ({className, newarr, best}) => {
                                 id={product.id}
                                 rating={product.rating}
                                 sizes={product.sizes}
+                                inCart={product.inCart}
                             />
                         })) :
                     false

@@ -1,0 +1,130 @@
+.cart{
+  display: flex;
+  flex-direction: column;
+  &__wrapper{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+  &__content{
+    display: flex;
+    width: 100%;
+    height: 100%;
+  }
+  &__title{
+    width: 19%;
+  }
+  &__btn{
+    width: 12%;
+    button{
+      background-color: transparent;
+      border: 1px solid transparent;
+      color: #939090;
+      transition: .4s;
+      &:hover{
+        cursor: pointer;
+        border-color: #ebebeb;
+        color: black;
+        transition: .4s;
+      }
+    }
+  }
+  &__img{
+    width: 12%;
+    height: 50px;
+    img{
+      height: 100%;
+    }
+  }
+  &__product, &__header{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid #ebebeb;
+  }
+  &__detail{
+    width: 19%;
+    input{
+      width: 40px;
+      height: 40px;
+      text-align: center;
+    }
+  }
+  .empty{
+    width: 24%;
+  }
+  .totals{
+    margin-top: 50px;
+    width: 50%;
+    .title{
+      padding: 20px;
+      font-size: 36px;
+      line-height: 48px;
+      font-weight: bold;
+    }
+    .subtotal{
+      padding: 20px;
+      border-bottom: 1px solid #ebebeb;
+      display: flex;
+      justify-content: space-between;
+      width: 50%;
+      &__title{
+        font-size: 16px;
+      }
+      &__price{}
+    }
+    .shipping{
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ebebeb;
+      width: 50%;
+      &__title{
+        font-size: 16px;
+      }
+      &__price{}
+    }
+    .total{
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      width: 50%;
+      font-size: 16px;
+      font-weight: bold;
+      &__title{
+      }
+      &__price{}
+    }
+    &__btn{
+      margin-top: 20px;
+      width: 30%;
+      background-color: #d6763c;
+      color: white;
+      border: none;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 22px;
+      &:hover{
+        cursor: pointer;
+      }
+    }
+  }
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance:textfield;
+}
+.single-product{
+  width: 100%;
+  display: flex;
+}

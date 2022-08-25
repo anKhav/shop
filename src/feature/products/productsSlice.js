@@ -2,7 +2,6 @@ import {createSlice} from "@reduxjs/toolkit";
 import {ProductsData} from "../../data/data";
 
 const initialState = ProductsData
-console.log(initialState)
 
 
 const productsSlice = createSlice({
@@ -12,9 +11,6 @@ const productsSlice = createSlice({
         getProducts: (state) => {
             return state.name
         },
-        // getProduct: (state) => {
-        //     state.products.find(product => product.id === Number(id))
-        // }
     }
 })
 export const {getProducts} = productsSlice.actions

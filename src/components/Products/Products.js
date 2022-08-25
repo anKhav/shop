@@ -4,7 +4,6 @@ import {useSelector} from "react-redux";
 
 const Products = ({className, newarr, best}) => {
     const products = useSelector(state => state.products)
-    console.log(products)
     return (
         <div className={className}>
             {

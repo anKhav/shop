@@ -55,6 +55,23 @@
     height: 24px;
   }
 }
+.cart__number{
+  position: absolute;
+  top: -15px;
+  right: -10px;
+  background-color: #024E82;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cart__link{
+  position: relative;
+}
 
 .new-products{
   &__content{

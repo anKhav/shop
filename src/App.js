@@ -8,6 +8,7 @@ import About from "./pages/About/About";
 import Contact from "./pages/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import SingleProduct from "./pages/SingleProduct/SingleProduct";
+import Cart from "./pages/Cart/Cart";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path={"/about"} element={<About/>}/>
             <Route path={"/contact"} element={<Contact/>}/>
             <Route path={"/products/:id"} element={<SingleProduct/>}/>
+            <Route path={"/cart"} element={<Cart/>}/>
         </Routes>
         <Footer className='section-inner footer'/>
     </div>

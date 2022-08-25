@@ -3,6 +3,7 @@ import './Cart.scss'
 import CartProduct from "../../components/CartProduct/CartProduct";
 import {useSelector} from "react-redux";
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
+import {Link} from "react-router-dom";
 
 const Cart = () => {
     const cart = useSelector(state => state.cartProduct)
@@ -24,7 +25,7 @@ const Cart = () => {
                 {
                     cart.map((product, i) => {
                         return (
-                            <CartProduct id={product.name + product.sizes} key={i} name={product.name} price={product.price} size={product.sizes} img={product.img}/>
+                            <CartProduct className='' id={product.name + product.sizes} key={i} name={product.name} price={product.price} size={product.sizes} img={product.img}/>
                         )
                     })
                 }
@@ -33,7 +34,7 @@ const Cart = () => {
                 <h2 className="title">Cart Totals</h2>
                 <div className="subtotal">
                     <h4 className="subtotal__title">Subtotal</h4>
-                    <div className="subtotal__price"></div>
+                    <div className="subtotal__price">${sum}</div>
                 </div>
                 <div className="shipping">
                     <h4 className="shipping__title">Shipping Free</h4>
@@ -43,7 +44,9 @@ const Cart = () => {
                     <h4 className="total__title">Subtotal</h4>
                     <div className="total__price">${sum}</div>
                 </div>
-                <MyBtn className='totals__btn'>Proceed to Checkout</MyBtn>
+                <Link to={'/checkout'}>
+                    <MyBtn className='totals__btn'>Proceed to Checkout</MyBtn>
+                </Link>
             </div>
         </section>
     );

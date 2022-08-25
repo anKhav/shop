@@ -47,8 +47,8 @@ const SingleProduct = () => {
                             {
                                 equalIdProduct.categories.map((category ,i ) => {
                                     return (
-                                        i < equalIdProduct.categories.length - 1 ? <li key={equalIdProduct.id}>{category},&#160;</li> :
-                                            <li key={Math.random() + category}>{category}.</li>
+                                        i < equalIdProduct.categories.length - 1 ? <li key={Math.random() + i}>{category},&#160;</li> :
+                                            <li key={Math.random() + i}>{category}.</li>
                                     )
                                 })
                             }
@@ -58,8 +58,8 @@ const SingleProduct = () => {
                             {
                                 equalIdProduct.tags.map((tag ,i ) => {
                                     return (
-                                        i < equalIdProduct.tags.length - 1 ? <li key={equalIdProduct.id}>{tag},&#160;</li> :
-                                            <li key={Math.random() + tag}>{tag}.</li>
+                                        i < equalIdProduct.tags.length - 1 ? <li key={Math.random() + i}>{tag},&#160;</li> :
+                                            <li key={Math.random() + i}>{tag}.</li>
                                     )
                                 })
                             }

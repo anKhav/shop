@@ -33,47 +33,6 @@ const Home = () => {
                         Recently added shirts!
                     </h4>
                     <Products className='container__content new-products__content' newarr="true"/>
-                    {/*<div className="container__content new-products__content">*/}
-                    {/*    <Product*/}
-                    {/*        src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*        name='Outcast T-Shirt'*/}
-                    {/*        price='$29.00'*/}
-                    {/*    />*/}
-                    {/*    <Product*/}
-                    {/*        src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*        name='Outcast T-Shirt'*/}
-                    {/*        price='$29.00'*/}
-                    {/*    /><Product*/}
-                    {/*    src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*    name='Outcast T-Shirt'*/}
-                    {/*    price='$29.00'*/}
-                    {/*    />*/}
-                    {/*    <Product*/}
-                    {/*        src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*        name='Outcast T-Shirt'*/}
-                    {/*        price='$29.00'*/}
-                    {/*    />*/}
-                    {/*    <Product*/}
-                    {/*        src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*        name='Outcast T-Shirt'*/}
-                    {/*        price='$29.00'*/}
-                    {/*    />*/}
-                    {/*    <Product*/}
-                    {/*        src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*        name='Outcast T-Shirt'*/}
-                    {/*        price='$29.00'*/}
-                    {/*    />*/}
-                    {/*    <Product*/}
-                    {/*        src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*        name='Outcast T-Shirt'*/}
-                    {/*        price='$29.00'*/}
-                    {/*    />*/}
-                    {/*    <Product*/}
-                    {/*        src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*        name='Outcast T-Shirt'*/}
-                    {/*    price='$29.00'*/}
-                    {/*    />*/}
-                    {/*</div>*/}
                 </div>
             </section>
             <section className="section-outer">
@@ -119,28 +78,6 @@ const Home = () => {
                     <h3 className="container__title top-sellers__title">Top Sellers</h3>
                     <h4 className="container__subtitle top-sellers__subtitle">Browse our top selling products</h4>
                     <Products className='container__content content' best='true'/>
-                    {/*<div className="container__content content">*/}
-                    {/*    <Product*/}
-                    {/*        src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*        name='Red Shirt'*/}
-                    {/*        price='$49.00'*/}
-                    {/*    />*/}
-                    {/*    <Product*/}
-                    {/*        src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*        name='Red Shirt'*/}
-                    {/*        price='$49.00'*/}
-                    {/*    />*/}
-                    {/*    <Product*/}
-                    {/*        src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*        name='Outcast T-Shirt'*/}
-                    {/*        price='$39.00'*/}
-                    {/*    />*/}
-                    {/*    <Product*/}
-                    {/*        src='/img/product.jpg' alt='men t-shirt'*/}
-                    {/*        name='Outcast T-Shirt'*/}
-                    {/*        price='$24.00'*/}
-                    {/*    />*/}
-                    {/*</div>*/}
                     <MyBtn
                         type='submit'
                         className="top-sellers__btn"

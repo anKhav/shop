@@ -74,7 +74,9 @@
       &__title{
         font-size: 16px;
       }
-      &__price{}
+      &__price{
+        font-weight: bold;
+      }
     }
     .shipping{
       padding: 20px;

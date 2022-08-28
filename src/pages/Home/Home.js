@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import Benefit from "../../components/Benefit/Benefit";
 import Promo from "../../components/Promo/Promo";
@@ -6,19 +6,19 @@ import Products from "../../components/Products/Products";
 
 
 
-import './Home.scss'
+import "./Home.scss"
 
 const Home = () => {
 
     return (
-        <div className='Home'>
+        <div className="Home">
             <section className='section-outer'>
                 <div className="hero">
                     <div className="hero__content">
                         <h2 className="hero__title">
                             Stylist picks beat the heat
                         </h2>
-                        <MyBtn className={'hero__btn'}>
+                        <MyBtn className='hero__btn'>
                             Shop now
                         </MyBtn>
                     </div>

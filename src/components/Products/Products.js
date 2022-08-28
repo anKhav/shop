@@ -20,6 +20,7 @@ const Products = ({className, newarr, best}) => {
                                 id={product.id}
                                 rating={product.rating}
                                 inCart={product.inCart}
+                                quantity={product.cartQuantity}
                             />
                     })) :
                     false
@@ -39,6 +40,7 @@ const Products = ({className, newarr, best}) => {
                                 rating={product.rating}
                                 sizes={product.sizes}
                                 inCart={product.inCart}
+                                quantity={product.cartQuantity}
                             />
                         })) :
                     false

@@ -6,10 +6,11 @@ import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import {Link} from "react-router-dom";
 
 const Cart = () => {
-    const cart = useSelector(state => state.cartProduct)
+    const cart = useSelector(state => state.cartProduct.cart)
+
     const sum = cart.reduce((accumulator, object) => {
-        return accumulator + object.price;
-    }, 0);
+        return accumulator + object.price * object.cartQuantity;
+    }, 0)
 
 
     return (
@@ -25,7 +26,16 @@ const Cart = () => {
                 {
                     cart.map((product, i) => {
                         return (
-                            <CartProduct className='' id={product.name + product.sizes} key={i} name={product.name} price={product.price} size={product.sizes} img={product.img}/>
+                            <CartProduct
+                                className='' id={product.name + product.sizes}
+                                key={i} name={product.name}
+                                price={product.price}
+                                size={product.sizes}
+                                img={product.img}
+                                number={product.numbers}
+                                total={Number(product.cartQuantity) * Number(product.price)}
+                                value={product.cartQuantity}
+                            />
                         )
                     })
                 }

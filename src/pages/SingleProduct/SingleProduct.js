@@ -20,7 +20,9 @@ const SingleProduct = () => {
     const productToCart = {...equalIdProduct}
     productToCart.sizes = selectedSize
 
-
+     const handler = () =>{
+            dispatch(setProduct(productToCart))
+     }
 
 
     return (
@@ -41,7 +43,7 @@ const SingleProduct = () => {
                             This plain white shirt is made up of pure cotton and has a premium finish.
                         </p>
                         <Dropdown selected={selectedSize} setSelected={setSelectedSize} product={equalIdProduct}/>
-                        <MyBtn className='product__btn' onClick={() => dispatch(setProduct(productToCart))}>Add to Cart</MyBtn>
+                        <MyBtn disabled={selectedSize === 'Select Size'} className='product__btn' onClick={() =>handler()}>Add to Cart</MyBtn>
                         <ul className="product__categories">
                             <h5 className="tags__title">Category:&#160;</h5>
                             {

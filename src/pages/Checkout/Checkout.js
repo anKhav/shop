@@ -5,7 +5,7 @@ import './Checkout.scss'
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 
 const Checkout = () => {
-    const cart = useSelector(state => state.cartProduct)
+    const cart = useSelector(state => state.cartProduct.cart)
     const sum = cart.reduce((accumulator, object) => {
         return accumulator + object.price;
     }, 0);

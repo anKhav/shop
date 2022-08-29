@@ -12,7 +12,8 @@ export const ProductsData = [
         sizes:['L','S','XS'],
         categories:['Man', 'Shirt', 'Casual'],
         tags:['Modern', 'Design', 'Cotton'],
-        isCart:false
+        isCart:false,
+        cat:'Men'
     },
     {
         id:2,
@@ -26,7 +27,8 @@ export const ProductsData = [
         sizes:['L','S','XS'],
         categories:['Woman', 'Polo', 'Casual'],
         tags:['Modern', 'Design', 'Cotton'],
-        isCart:false
+        isCart:false,
+        cat:'Men'
     },
     {
         id:3,
@@ -40,7 +42,8 @@ export const ProductsData = [
         sizes:['L','S','XS'],
         categories:['Woman', 'Polo', 'Casual'],
         tags:['Modern', 'Design', 'Cotton'],
-        isCart:false
+        isCart:false,
+        cat:'Men'
     },
     {
         id:4,
@@ -54,7 +57,8 @@ export const ProductsData = [
         sizes:['L','S','XS'],
         categories:['Woman', 'Jacket', 'Casual'],
         tags:['Modern', 'Design', 'Denim'],
-        isCart:false
+        isCart:false,
+        cat:'Women'
     },
     {
         id:5,
@@ -68,7 +72,8 @@ export const ProductsData = [
         sizes:['XXXL','XS'],
         categories:['Man', 'T-Shirt', 'Casual'],
         tags:['Modern', 'Design', 'Cotton'],
-        isCart:false
+        isCart:false,
+        cat:'Men'
     },
     {
         id:6,
@@ -82,6 +87,7 @@ export const ProductsData = [
         sizes:['XL','S','XS'],
         categories:['Man', 'Polo', 'Casual'],
         tags:['Modern', 'Design', 'Cotton'],
-        isCart:false
+        isCart:false,
+        cat:'Men'
     },
 ]

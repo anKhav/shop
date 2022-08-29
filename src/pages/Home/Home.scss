@@ -39,6 +39,15 @@
     color: white;
     border: 3px solid white;
     transition: .4s;
+    width: 160px;
+    height: 58px;
+    font-size: 21px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     &:hover{
       background-color: white;
       transition: .4s;

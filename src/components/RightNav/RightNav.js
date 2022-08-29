@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
+import Menu from "../Menu/Menu";
 
 
 const RightNav = () => {
@@ -23,6 +24,7 @@ const RightNav = () => {
                 {cart.length === 0 ? false :
                     <span className="cart__number">{sum}</span>}
             </Link>
+            <Menu/>
         </div>
     );
 };

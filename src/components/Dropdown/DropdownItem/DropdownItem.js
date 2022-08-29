@@ -1,8 +1,8 @@
 import React from 'react';
 
-const DropdownItem = ({option, onClick}) => {
+const DropdownItem = ({onClick,children}) => {
     return (
-        <div className='dropdown__item' onClick={onClick}>{option}</div>
+        <div className={'dropdown__item'} onClick={onClick}>{children}</div>
     );
 };
 

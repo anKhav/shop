@@ -19,7 +19,7 @@ const Dropdown = ({product, selected,setSelected}) => {
                                     <DropdownItem onClick={() => {
                                         setSelected(size)
                                         setIsOpen(false)
-                                    }} key={size} option={size}/>
+                                    }} key={size} children={size}/>
                                 )
                             })
                         }

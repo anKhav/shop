@@ -1,0 +1,20 @@
+.shop{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  .product{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px;
+    width: calc(25% - 40px);
+    &__img{
+      width: 100%;
+      height: auto;
+    }
+    &__price{
+      margin-bottom: 30px;
+    }
+  }
+}

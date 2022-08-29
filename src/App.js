@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import SingleProduct from "./pages/SingleProduct/SingleProduct";
 import Cart from "./pages/Cart/Cart";
 import Checkout from "./pages/Checkout/Checkout";
+import Shop from "./pages/Shop/Shop";
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
             <Route path={"/products/:id"} element={<SingleProduct/>}/>
             <Route path={"/cart"} element={<Cart/>}/>
             <Route path={"/checkout"} element={<Checkout/>}/>
+            <Route path={"/shop/:cat"} element={<Shop/>}/>
+            <Route path={"/shop/:cat"} element={<Shop/>}/>
+            <Route path={"/shop/:cat"} element={<Shop/>}/>
         </Routes>
         <Footer className='section-inner footer'/>
     </div>

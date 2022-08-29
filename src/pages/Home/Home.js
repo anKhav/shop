@@ -3,6 +3,7 @@ import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import Benefit from "../../components/Benefit/Benefit";
 import Promo from "../../components/Promo/Promo";
 import Products from "../../components/Products/Products";
+import {Link} from "react-router-dom";
 
 
 
@@ -18,9 +19,9 @@ const Home = () => {
                         <h2 className="hero__title">
                             Stylist picks beat the heat
                         </h2>
-                        <MyBtn className='hero__btn'>
+                        <Link to='/shop/all' className='hero__btn'>
                             Shop now
-                        </MyBtn>
+                        </Link>
                     </div>
                 </div>
             </section>

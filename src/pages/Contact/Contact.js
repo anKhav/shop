@@ -1,5 +1,7 @@
 import React from 'react';
+
 import MyForm from "../../components/MyForm/MyForm";
+
 import './Contact.scss'
 
 const Contact = () => {

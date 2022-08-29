@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-
 import {useDispatch, useSelector} from "react-redux";
-import Dropdown from "../../components/Dropdown/Dropdown";
 import {useParams} from "react-router-dom";
-import Rating from '../../components/Rating/Rating'
+
+import Dropdown from "../../components/Dropdown/Dropdown";
+import Rating from '../../components/Products/Product/Rating/Rating'
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
-import {setProduct} from '../../feature/cartProduct/cartProduct'
+
+import {setProduct} from '../../feature/cartProduct/cartProductSlice'
 
 import './SingleProduct.scss'
 

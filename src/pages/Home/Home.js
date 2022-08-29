@@ -1,16 +1,38 @@
 import React from "react";
-import MyBtn from "../../components/UI/MyBtn/MyBtn";
-import Benefit from "../../components/Benefit/Benefit";
-import Promo from "../../components/Promo/Promo";
-import Products from "../../components/Products/Products";
 import {Link} from "react-router-dom";
 
-
+import MyBtn from "../../components/UI/MyBtn/MyBtn";
+import Products from "../../components/Products/Products";
 
 import "./Home.scss"
 
-const Home = () => {
+const Benefit = ({src, alt, title, descr}) => {
+    return (
+        <div className='Benefit benefit'>
+            <img src={src} alt={alt}/>
+            <div className="benefit__content">
+                <h5 className="benefit__title">{title}</h5>
+                <p className="benefit__decsr">{descr}</p>
+            </div>
+        </div>
+    );
+};
 
+const Promo = ({title, descr}) => {
+    return (
+        <div className='Promo promo'>
+            <div className="promo__content">
+                <h3 className="promo__title">{title}</h3>
+                <p className="promo__descr">{descr}</p>
+                <MyBtn className='promo__btn'>
+                    Buy Now
+                </MyBtn>
+            </div>
+        </div>
+    );
+};
+
+const Home = () => {
     return (
         <div className="Home">
             <section className='section-outer'>
@@ -19,9 +41,11 @@ const Home = () => {
                         <h2 className="hero__title">
                             Stylist picks beat the heat
                         </h2>
-                        <Link to='/shop/all' className='hero__btn'>
-                            Shop now
-                        </Link>
+                        <MyBtn className='hero__btn'>
+                            <Link  to='/shop/all'>
+                                Shop now
+                            </Link>
+                        </MyBtn>
                     </div>
                 </div>
             </section>
@@ -79,10 +103,11 @@ const Home = () => {
                     <h3 className="container__title top-sellers__title">Top Sellers</h3>
                     <h4 className="container__subtitle top-sellers__subtitle">Browse our top selling products</h4>
                     <Products className='container__content content' best='true'/>
-                    <MyBtn
-                        type='submit'
-                        className="top-sellers__btn"
-                    >Shop Now</MyBtn>
+                    <MyBtn className='top-sellers__btn'>
+                        <Link  to='/shop/all'>
+                            Shop now
+                        </Link>
+                    </MyBtn>
                 </div>
             </section>
         </div>

@@ -1,12 +1,10 @@
 import React from 'react';
 import Logo from "../Logo/Logo";
-import Navbar from "../Navbar/Navbar";
-
-
+import Navbar from "./Navbar/Navbar";
 
 import './Header.scss'
 
-import RightNav from "../RightNav/RightNav";
+import RightNav from "./Navbar/RightNav/RightNav";
 
 const Header = () => {
     return (

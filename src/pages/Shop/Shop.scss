@@ -1,7 +1,19 @@
 .shop{
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  &__wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 50px;
+  }
+  &__title{
+    font-size: 36px;
+    line-height: 48px;
+    text-transform: uppercase;
+  }
   .product{
     display: flex;
     flex-direction: column;
@@ -9,6 +21,9 @@
     justify-content: space-between;
     margin: 20px;
     width: calc(25% - 40px);
+    border-bottom-left-radius: 20px;
+    background-color: rgba(0,0,0,0.06);
+    border-bottom-right-radius: 20px;
     &__img{
       width: 100%;
       height: auto;

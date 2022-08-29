@@ -39,15 +39,6 @@
     color: white;
     border: 3px solid white;
     transition: .4s;
-    width: 160px;
-    height: 58px;
-    font-size: 21px;
-    font-weight: bold;
-    text-transform: uppercase;
-    line-height: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     &:hover{
       background-color: white;
       transition: .4s;
@@ -66,7 +57,7 @@
 }
 .cart__number{
   position: absolute;
-  top: -15px;
+  top: -10px;
   right: -10px;
   background-color: #024E82;
   border-radius: 50%;
@@ -201,5 +192,31 @@
       font-size: 14px;
       line-height: 28px;
     }
+  }
+}
+
+.Benefit{
+  display: flex;
+  align-items: flex-start;
+  img{
+    width: 24px;
+  }
+}
+
+.Promo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-color: black;
+  height: 100%;
+  &:first-child{
+    width: 100%;
+    margin-right: 20px;
+  }
+  &:nth-child(2){
+    width: 70%;
   }
 }

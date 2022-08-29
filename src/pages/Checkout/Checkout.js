@@ -1,8 +1,10 @@
 import React from 'react';
-import CartProduct from "../../components/CartProduct/CartProduct";
 import {useSelector} from "react-redux";
-import './Checkout.scss'
+
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
+import CartProduct from "../../components/CartProduct/CartProduct";
+
+import './Checkout.scss'
 
 const Checkout = () => {
     const cart = useSelector(state => state.cartProduct.cart)

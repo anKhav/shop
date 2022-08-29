@@ -10,7 +10,7 @@ const Rating = ({rating}) => {
                         <div
                             key={index}
                         >
-                            <img className='star on'  src="/img/star.svg" alt=""/>
+                            <img className='star on' src="/img/star.svg" alt=""/>
                         </div>
                     )
                 } else  if (index + 1 > rating){
@@ -18,12 +18,12 @@ const Rating = ({rating}) => {
                         <div
                             key={index}
                         >
-                            <img className='star off'  src="/img/star.svg" alt=""/>
+                            <img className='star off' src="/img/star.svg" alt=""/>
                         </div>
                     )
                 }
             })}
-            <a href='#' className='reviews'>(15)</a>
+            <a href='src/components/Products/Product/Rating/Rating#' className='reviews'>(15)</a>
         </div>
     );
 };

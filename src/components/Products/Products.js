@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from "../Product/Product";
+import Product from "./Product/Product";
 import {useSelector} from "react-redux";
 
 const Products = ({className, newarr, best}) => {

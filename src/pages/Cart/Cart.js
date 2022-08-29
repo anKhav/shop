@@ -1,13 +1,14 @@
 import React from 'react';
-import './Cart.scss'
-import CartProduct from "../../components/CartProduct/CartProduct";
 import {useSelector} from "react-redux";
-import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import {Link} from "react-router-dom";
+
+import MyBtn from "../../components/UI/MyBtn/MyBtn";
+import CartProduct from "../../components/CartProduct/CartProduct";
+
+import './Cart.scss'
 
 const Cart = () => {
     const cart = useSelector(state => state.cartProduct.cart)
-
     const sum = cart.reduce((accumulator, object) => {
         return accumulator + object.price * object.cartQuantity;
     }, 0)

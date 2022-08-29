@@ -27,7 +27,7 @@ function App() {
             <Route path={"/shop/:cat"} element={<Shop/>}/>
             <Route path={"/shop/:cat"} element={<Shop/>}/>
         </Routes>
-        <Footer className='section-inner footer'/>
+        <Footer className='footer'/>
     </div>
   );
 }

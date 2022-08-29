@@ -1,15 +1,18 @@
+.SingleProduct{
+  margin-bottom: 100px;
+}
 .product{
-  //background-color: rgba(0,0,0,0.06);
   background-color:white;
   height: 70vh;
   margin-top: 50px;
   &__wrapper{
     display: flex;
+    justify-content: center;
     height: 100%;
   }
   &__img{
-    height: 100%;
     img{
+      width: auto;
       height: 100%;
     }
   }

@@ -4,7 +4,7 @@ import './Footer.scss'
 const Footer = ({className}) => {
     return (
         <footer className={className + ' Footer'}>
-            <div className="footer__wrapper">
+            <div className="section-inner footer__wrapper">
                 <ul className="footer__list">
                     <h5 className="footer__title">Company Info</h5>
                     <li><a href="#">About Us</a></li>

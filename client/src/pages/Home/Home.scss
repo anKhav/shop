@@ -140,7 +140,6 @@
 }
 
 .footer{
-  margin-bottom: 30px;
   background-color: #fbfbfb;
   &__wrapper{
     display: flex;
@@ -186,6 +185,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 30px;
     &__main{}
     &__payments{}
     &__text{

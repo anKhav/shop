@@ -21,6 +21,8 @@ const Rating = ({rating}) => {
                             <img className='star off' src="/img/star.svg" alt=""/>
                         </div>
                     )
+                } else {
+                    return
                 }
             })}
             <a href='src/components/Products/Product/Rating/Rating#' className='reviews'>(15)</a>

@@ -4,7 +4,7 @@ const {DataTypes} = require('sequelize')
 const User = seauelize.define('user', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     email:{type: DataTypes.STRING, unique:true},
-    password:{type: DataTypes.INTEGER},
+    password:{type: DataTypes.STRING},
     role:{type: DataTypes.STRING, defaultValue:'USER'},
 })
 
@@ -18,7 +18,7 @@ const BasketProduct = seauelize.define('basket_device', {
 
 const Product = seauelize.define('product', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
-    name:{type: DataTypes.STRING, unique:true, allowNull:false},
+    name:{type: DataTypes.STRING, allowNull:false},
     price:{type: DataTypes.INTEGER, allowNull: false},
     rating:{type: DataTypes.INTEGER, defaultValue: 0},
     img:{type: DataTypes.STRING, allowNull: false},
@@ -26,7 +26,7 @@ const Product = seauelize.define('product', {
 
 const Size = seauelize.define('size', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
-    name:{type: DataTypes.STRING, unique:true, allowNull:false},
+    name:{type: DataTypes.STRING, unique:true},
 })
 
 const Category = seauelize.define('category', {
@@ -70,7 +70,7 @@ Rating.belongsTo(Product)
 Product.hasMany(BasketProduct)
 BasketProduct.belongsTo(Product)
 
-Product.hasMany(ProductInfo)
+Product.hasMany(ProductInfo, {as:'info'})
 ProductInfo.belongsTo(Product)
 
 Size.belongsToMany(Category, {through: SizeCategory})

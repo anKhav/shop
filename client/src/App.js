@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './reset.css'
 import './App.scss'
 import Header from "./components/Header/Header";
@@ -13,6 +13,7 @@ import Checkout from "./pages/Checkout/Checkout";
 import Shop from "./pages/Shop/Shop";
 
 function App() {
+
   return (
     <div className="App">
         <Header/>

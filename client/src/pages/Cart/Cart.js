@@ -12,6 +12,7 @@ const Cart = () => {
     const sum = cart.reduce((accumulator, object) => {
         return accumulator + object.price * object.cartQuantity;
     }, 0)
+    console.log(cart)
 
 
     return (
@@ -32,7 +33,7 @@ const Cart = () => {
                                 key={i} name={product.name}
                                 price={product.price}
                                 size={product.sizes}
-                                img={product.img}
+                                img={`http://localhost:5000/${product.img}`}
                                 number={product.numbers}
                                 total={Number(product.cartQuantity) * Number(product.price)}
                                 value={product.cartQuantity}

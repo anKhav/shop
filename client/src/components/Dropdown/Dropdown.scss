@@ -3,6 +3,7 @@
   width: 210px;
   height: 50px;
   margin-top: 20px;
+  text-transform: uppercase;
   &__btn{
     width: 210px;
     height: 50px;
@@ -23,6 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-transform: uppercase;
     text-align: center;
     border:1px solid rgba(0,0,0,0.06);;
     background-color: white;

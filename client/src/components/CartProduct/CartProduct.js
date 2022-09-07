@@ -17,7 +17,7 @@ const CartProduct = ({name, size, price, img, id, className, value, total, onCha
             <div className='cart__detail'>{`${name} (${size})`}</div>
             <div className='cart__detail'>${price}</div>
             <div className={`cart__detail${className}`}>
-                <input type="number" value={value} onChange={onChange}/>
+                <input key={id} type="number" value={value} onChange={onChange}/>
             </div>
             <div className={`cart__detail${className}`}>${total}</div>
         </div>

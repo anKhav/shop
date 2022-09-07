@@ -7,7 +7,7 @@ const cartProductSlice = createSlice({
     name:'cartProduct',
     initialState,
     reducers:{
-        setProduct:(state, action) => {
+        setCartProduct:(state, action) => {
             const itemIndex = state.cart.findIndex((item) => {
                 return (item.sizes === action.payload.sizes && item.name === action.payload.name)
             })
@@ -23,5 +23,5 @@ const cartProductSlice = createSlice({
         },
     }
 })
-export const {setProduct,removeProduct ,setNumbers, setCounter} = cartProductSlice.actions
+export const {setCartProduct,removeProduct ,setNumbers, setCounter} = cartProductSlice.actions
 export default cartProductSlice.reducer

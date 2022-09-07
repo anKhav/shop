@@ -11,6 +11,7 @@ const Checkout = () => {
     const sum = cart.reduce((accumulator, object) => {
         return accumulator + object.price;
     }, 0);
+    console.log(cart)
 
 
     return (

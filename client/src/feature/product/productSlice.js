@@ -2,8 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
-    product:null,
-
+    product:{}
 }
 
 export const getOneProduct = createAsyncThunk(

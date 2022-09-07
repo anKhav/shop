@@ -22,11 +22,13 @@ const Product = seauelize.define('product', {
     price:{type: DataTypes.INTEGER, allowNull: false},
     rating:{type: DataTypes.INTEGER, defaultValue: 0},
     img:{type: DataTypes.STRING, allowNull: false},
+    sizes:{type:DataTypes.ARRAY(DataTypes.STRING)},
+    categories:{type:DataTypes.ARRAY(DataTypes.STRING)}
 })
 
 const Size = seauelize.define('size', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
-    name:{type: DataTypes.STRING, unique:true},
+    name:{type: DataTypes.STRING},
 })
 
 const Category = seauelize.define('category', {
@@ -39,11 +41,11 @@ const Rating = seauelize.define('rating', {
     rate:{type: DataTypes.INTEGER, allowNull:false},
 })
 
-const ProductInfo = seauelize.define('product_info', {
-    id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
-    title:{type: DataTypes.STRING, allowNull:false},
-    description:{type: DataTypes.STRING, allowNull:false},
-})
+// const ProductInfo = seauelize.define('product_info', {
+//     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
+//     title:{type: DataTypes.STRING, allowNull:false},
+//     description:{type: DataTypes.STRING, allowNull:false},
+// })
 
 const SizeCategory = seauelize.define('size_category', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
@@ -58,11 +60,11 @@ Rating.belongsTo(User)
 Basket.hasMany(BasketProduct)
 BasketProduct.belongsTo(Basket)
 
-Size.hasMany(Product)
-Product.belongsTo(Size)
+// Size.hasMany(Product)
+// Product.belongsTo(Size)
 
-Category.hasMany(Product)
-Product.belongsTo(Category)
+// Category.hasMany(Product)
+// Product.belongsTo(Category)
 
 Product.hasMany(Rating)
 Rating.belongsTo(Product)
@@ -70,12 +72,12 @@ Rating.belongsTo(Product)
 Product.hasMany(BasketProduct)
 BasketProduct.belongsTo(Product)
 
-Product.hasMany(ProductInfo, {as:'info'})
-ProductInfo.belongsTo(Product)
+// Product.hasMany(ProductInfo, {as:'info'})
+// ProductInfo.belongsTo(Product)
 
 Size.belongsToMany(Category, {through: SizeCategory})
 Category.belongsToMany(Size, {through: SizeCategory})
 
-module.exports = {User, Basket, BasketProduct, Product, Size, Category, Rating, ProductInfo, SizeCategory}
+module.exports = {User, Basket, BasketProduct, Product, Size, Category, Rating, SizeCategory}
 
 

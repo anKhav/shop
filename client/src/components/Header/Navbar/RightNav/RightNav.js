@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Menu from "../../Menu/Menu";
+import {setIsAuth} from "../../../../feature/user/userSlice";
 
 
 const RightNav = () => {
@@ -16,15 +17,33 @@ const RightNav = () => {
         sum = 0
     }
 
+    const dispatch = useDispatch()
+    const {isAuth} = useSelector(state => state.user.user)
+
+
     return (
         <div className='RightNav'>
-            <Link className='right-nav__icon' to='/user'><img src='/img/user_icon.svg' alt='user icon'/></Link>
-            <Link className='cart__link' to='/cart'>
-                <img src='/img/shopping-bag.svg' alt='cart icon' />
-                {cart.length === 0 ? false :
-                    <span className="cart__number">{sum}</span>}
-            </Link>
-            <Menu/>
+            {isAuth ?
+                <div className='RightNav__wrapper'>
+                    <Link to='/admin'>Admin</Link>
+                    <Link onClick={() => dispatch(setIsAuth())} className='right-nav__icon' to='/auth'><img src='/img/user_icon.svg' alt='user icon'/></Link>
+                    <Link className='cart__link' to='/cart'>
+                        <img src='/img/shopping-bag.svg' alt='cart icon' />
+                        {cart.length === 0 ? false :
+                            <span className="cart__number">{sum}</span>}
+                    </Link>
+                    <Menu/>
+                </div>:
+                <div className='RightNav__wrapper'>
+                    <Link onClick={() => dispatch(setIsAuth())} className='right-nav__icon' to='/auth'><img src='/img/user_icon.svg' alt='user icon'/></Link>
+                    <Link className='cart__link' to='/cart'>
+                        <img src='/img/shopping-bag.svg' alt='cart icon' />
+                        {cart.length === 0 ? false :
+                            <span className="cart__number">{sum}</span>}
+                    </Link>
+                    <Menu/>
+                </div>
+            }
         </div>
     );
 };

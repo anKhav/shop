@@ -54,7 +54,7 @@ const SingleProduct = () => {
                                         A classic t-shirt never goes out of style. This is our most premium collection of shirt.
                                         This plain white shirt is made up of pure cotton and has a premium finish.
                                     </p>
-                                    <Dropdown selected={selectedSize} setSelected={setSelectedSize} product={product}/>
+                                    <Dropdown selected={selectedSize} setSelected={setSelectedSize} obj={product.sizes}/>
                                     <MyBtn disabled={selectedSize === 'Select Size'} className='product__btn' onClick={(e) => handleToCart(e)}>Add to Cart</MyBtn>
                                     <ul className="product__categories">
                                         <h5 className="tags__title">Category:&#160;</h5>

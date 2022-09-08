@@ -12,7 +12,7 @@ import {
     ADMIN_ROUTE, AUTH_ROUTE,
     CART_ROUTE,
     CHECKOUT_ROUTE,
-    CONTACT_ROUTE,
+    CONTACT_ROUTE, CREATE_CATEGORY_ROUTE, CREATE_PRODUCT_ROUTE, CREATE_SIZE_ROUTE,
     HOME_ROUTE,
     PRODUCT_ROUTE, REGISTRATION_ROUTE,
 } from "./utils/consts";
@@ -25,6 +25,18 @@ export const authRoutes = [
     {
         path:CART_ROUTE,
         element: <Cart/>
+    },
+    {
+        path:ADMIN_ROUTE + CREATE_CATEGORY_ROUTE,
+        element: <Admin/>
+    },
+    {
+        path:ADMIN_ROUTE + CREATE_SIZE_ROUTE,
+        element: <Admin/>
+    },
+    {
+        path:ADMIN_ROUTE + CREATE_PRODUCT_ROUTE,
+        element: <Admin/>
     }
 ]
 export const publicRoutes = [

@@ -1,0 +1,78 @@
+.admin{
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 50px auto;
+  min-height: calc(100vh - 580px);
+  .link{
+    color: black;
+    border-bottom: 1px solid black;
+    margin-right: 20px;
+    padding: 20px;
+    font-size: 16px;
+    &-active{
+      color: #024E82;
+      border-color: #024E82;
+    }
+  }
+  &__header{
+  }
+  &__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    margin:50px;
+  }
+  &__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+  }
+  &__input{
+    padding: 20px;
+    width: 100%;
+    margin: 10px;
+    outline: none;
+  }
+  &__btn{
+    margin-top: 20px;
+    border: 1px solid #024E82;
+    background-color: transparent;
+  }
+  &__product{
+    position: absolute;
+    right: 10%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  input{
+    text-transform: none;
+    outline: none;
+    margin-bottom: 10px;
+    &:hover{
+      cursor:text;
+    }
+  }
+  .product{
+    &__title{}
+    &__info{
+      margin-top: 20px;
+    }
+    &__img{
+      width: 200px;
+    }
+  }
+  .custom-file-upload {
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  input[type="file"] {
+    display: none;
+  }
+}

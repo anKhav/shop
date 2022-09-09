@@ -76,3 +76,36 @@
     display: none;
   }
 }
+.category{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  &__list{
+    display: flex;
+  }
+  &__item{
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #024E82;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  &__btns{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__btn{
+    padding: 20px;
+    width: 140px;
+    background-color: transparent;
+    border: 1px solid #024E82;
+    margin-right: 10px;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}

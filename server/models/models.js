@@ -29,6 +29,7 @@ const Product = seauelize.define('product', {
 const Size = seauelize.define('size', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     name:{type: DataTypes.STRING},
+    sizeIndex:{type: DataTypes.INTEGER},
 })
 
 const Category = seauelize.define('category', {

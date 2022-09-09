@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './Dropdown.scss'
 import DropdownItem from "./DropdownItem/DropdownItem";
 
-const Dropdown = ({obj, selected,setSelected}) => {
+const Dropdown = ({obj, selected,setSelected, closable, onClick}) => {
     const [isOpen, setIsOpen] = useState(false)
 
     return (
@@ -16,11 +16,15 @@ const Dropdown = ({obj, selected,setSelected}) => {
                         {
                             obj.map(size => {
                                 return (
-                                    <DropdownItem onClick={() => {
-                                        setSelected(size)
-                                        setIsOpen(false)
-                                        console.log('click')
-                                    }} key={size} children={size}/>
+                                    <DropdownItem
+                                        onClick={
+                                        closable ? () => {
+                                            setSelected(size)
+                                            closable ? setIsOpen(false) :setIsOpen(true)
+                                            console.log('click')
+                                        } : onClick
+                                        }
+                                        key={size} children={size}/>
                                 )
                             })
                         }

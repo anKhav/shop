@@ -1,4 +1,4 @@
-import {configureStore} from "@reduxjs/toolkit";
+import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 import productsSlice from "../feature/products/productsSlice";
 import cartProduct from "../feature/cartProduct/cartProductSlice";
 import productSlice from "../feature/product/productSlice";
@@ -14,5 +14,9 @@ export const store = configureStore({
         user:userSlice,
         sizes:sizeSlice,
         categories:categorySLice
-    }
+    },
+    middleware: [
+    ...getDefaultMiddleware({
+        serializableCheck: false
+    })]
 })

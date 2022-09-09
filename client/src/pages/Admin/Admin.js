@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getSizes} from "../../feature/size/sizeSlice";
 import {getCategories} from "../../feature/category/categorySLice";
 import Categories from "../../components/Categories/Categories";
+import {createProduct} from "../../feature/products/productsSlice";
 
 const Admin = () => {
     const fileReader = new FileReader()
@@ -15,8 +16,8 @@ const Admin = () => {
     const dispatch = useDispatch()
     const [selectedName, setSelectedName] = useState('')
     const [selectedPrice, setSelectedPrice] = useState(0)
-    const [selectedSize, setSelectedSize] = useState('Select Size')
-    const [sizeArray, setSizeArray] = useState([])
+    const [selectedSize, setSelectedSize] = useState('Select size')
+    const [selectedArraySize, setSelectedArraySize] = useState([])
     const [categoriesArray, setCategoriesArray] = useState([])
     const [selectedCategory, setSelectedCategory] = useState('Select Category')
 
@@ -27,36 +28,35 @@ const Admin = () => {
     fileReader.onloadend = () => {
         setSelectedImgUrl(fileReader.result)
     }
-
     const changeHandler = (e) => {
         e.preventDefault()
         const file = e.target.files[0]
+
         setImage(file)
         fileReader.readAsDataURL(file)
     }
-    const sizeArr = []
     const handleSizes = (e) => {
-        const res = sizeArr.push(e.target.innerText)
-        setSizeArray([...sizeArray,sizeArr])
-        console.log(res)
+        setSelectedArraySize([...selectedArraySize,e.target.innerText])
     }
 
-    const categoryArr = []
     const handleCat = (e) => {
-        const res = categoryArr.push(e.target.innerText)
-        setCategoriesArray([...categoriesArray,categoryArr])
-        console.log(res)
+        setCategoriesArray([...categoriesArray,e.target.innerText])
     }
-
+    const arrayToStr = (arr) => {
+        const newArr = arr.join(',')
+        return newArr
+    }
     const createNewProduct = () => {
+        const size = arrayToStr(selectedArraySize)
+        const category = arrayToStr(categoriesArray)
         const newProduct = {
             name:selectedName,
             price:selectedPrice,
-            size:sizeArray,
-            category:categoriesArray,
+            sizes:size,
+            categories:category,
             img:image
         }
-        console.log(newProduct)
+        dispatch(createProduct(newProduct))
         return newProduct
     }
 
@@ -79,7 +79,7 @@ const Admin = () => {
                 </NavLink>
             </div>
             <div className="admin__content">
-                <form className='admin__form'>
+                <form className='admin__form' action='http://localhost:5000/api/product' method='post'>
                     {
                         pathname === '/admin/product' ?
                             <div>
@@ -94,18 +94,18 @@ const Admin = () => {
                                     <Dropdown closable={false} selected={selectedCategory} setSelected={setSelectedCategory} obj={categories} onClick={(e) => handleCat(e)}/>
                                 </div>
                                 <div className="admin__product">
-                                    <h3 className="product__info">Name: {createNewProduct().name}</h3>
-                                    <span className="product__info">Price: {createNewProduct().price} $</span>
-                                    <span className="product__info">Sizes: {createNewProduct().size.join(', ')}</span>
-                                    <span className="product__info">Categories: {createNewProduct().category.join(', ')}</span>
-                                    {image ? <img className="product__info product__img" src={selectedImgUrl} alt="Product img"/> : false}
+                                    {/*<h3 className="product__info">Name: {createNewProduct().name}</h3>*/}
+                                    {/*<span className="product__info">Price: {createNewProduct().price} $</span>*/}
+                                    {/*<span className="product__info">Sizes: {createNewProduct().size.join(', ')}</span>*/}
+                                    {/*<span className="product__info">Categories: {createNewProduct().category.join(', ')}</span>*/}
+                                    {/*{image ? <img className="product__info product__img" src={selectedImgUrl} alt="Product img"/> : false}*/}
                                 </div>
                             </div>
                             :
                         <Categories/>
                     }
                 </form>
-                <MyBtn onClick={ () => createNewProduct()} className='admin__btn'>Add</MyBtn>
+                <MyBtn type='submit' onClick={() => createNewProduct()} className='admin__btn'>Add</MyBtn>
             </div>
         </div>
     );

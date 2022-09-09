@@ -7,6 +7,7 @@ import Contact from './pages/Contact/Contact'
 import Home from './pages/Home/Home'
 import Cart from './pages/Cart/Cart'
 import Admin from './pages/Admin/Admin'
+
 import {
     ABOUT_ROUTE,
     ADMIN_ROUTE, AUTH_ROUTE,

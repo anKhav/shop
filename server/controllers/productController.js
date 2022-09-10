@@ -16,10 +16,21 @@ class ProductController {
             const product = await Product.create({
                 name, price, img: fileName, sizes, categories
             })
-        console.log(req.body)
             return res.json(product)
         } catch (e) {
             next(ApiError.badRequest(e.message))
+        }
+    }
+    async delete(req,res) {
+        const {id} = req.body
+        // console.log(id)
+        const row = await Product.findOne({
+            where: {id}
+        })
+        console.log(row)
+        if (row) {
+            await row.destroy(); // deletes the row
+            return res.json(row)
         }
     }
     async getAll(req, res) {

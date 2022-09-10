@@ -26,6 +26,14 @@ export const createProduct = createAsyncThunk(
         dispatch(addProduct({name,price,sizes,categories}))
     }
 )
+export const deleteProduct = createAsyncThunk(
+    'category/deleteCategory',
+    async (id,{dispatch}) => {
+        console.log(id)
+        await axios.delete(`http://localhost:5000/api/product`,{data:id})
+        dispatch(delProduct())
+    }
+)
 
 const productsSlice = createSlice({
     name:'products',
@@ -40,7 +48,11 @@ const productsSlice = createSlice({
         addProduct: (state, action,obj) => {
             console.log(obj)
             state.products =  state.products.push(action.payload)
-        }
+        },
+        delProduct: (state,action) => {
+            console.log(action.payload)
+            state.products = state.products.filter(product => product.id !== action.payload)
+        },
 
     },
     extraReducers:{
@@ -50,9 +62,12 @@ const productsSlice = createSlice({
         [createProduct.fulfilled] : () => console.log('fulfilled'),
         [createProduct.pending] : () => console.log('pending'),
         [createProduct.rejected] : () => console.log('rejected'),
+        [deleteProduct.fulfilled] : () => console.log('fulfilled'),
+        [deleteProduct.pending] : () => console.log('pending'),
+        [deleteProduct.rejected] : () => console.log('rejected'),
 
     }
 })
-export const {setProducts,addProduct} = productsSlice.actions
+export const {setProducts,addProduct,delProduct} = productsSlice.actions
 
 export default productsSlice.reducer

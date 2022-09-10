@@ -3,30 +3,31 @@ import Product from "./Product/Product";
 import {useDispatch, useSelector} from "react-redux";
 import {getProducts} from "../../feature/products/productsSlice";
 
-const Products = ({className, newarr, best}) => {
-    const products = useSelector(state => state.products.products)
+const Products = ({className}) => {
     const dispatch = useDispatch()
 
     useEffect( () => {
         dispatch(getProducts())
-    },[])
+    },[dispatch])
+    const products = useSelector(state => state.products.products)
 
     return (
         <div className={className}>
             {
-                products.map(product => {
-                        return <Product
-                            key={product.id}
-                            src={`http://localhost:5000/${product.img}`}
-                            // alt={product.name}
-                            name={product.name}
-                            price={product.price}
-                            id={product.id}
-                            rating={product.rating}
-                            // inCart={product.inCart}
-                            // quantity={product.cartQuantity}
-                        />
-                    })
+                products ?
+                    (
+                        products.map(product => {
+                            return <Product
+                                key={product.id}
+                                src={`http://localhost:5000/${product.img}`}
+                                name={product.name}
+                                price={product.price}
+                                id={product.id}
+                                rating={product.rating}
+                            />
+                        })
+                    ) :
+                    <div>Loading...</div>
             }
             {/*{*/}
             {/*    newarr ?*/}

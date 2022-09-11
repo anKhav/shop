@@ -24,10 +24,6 @@ export const authRoutes = [
         element: <Admin/>
     },
     {
-        path:CART_ROUTE,
-        element: <Cart/>
-    },
-    {
         path:ADMIN_ROUTE + CREATE_CATEGORY_ROUTE,
         element: <Admin/>
     },
@@ -48,6 +44,10 @@ export const publicRoutes = [
     {
         path:HOME_ROUTE,
         element: <Home/>
+    },
+    {
+        path:CART_ROUTE,
+        element: <Cart/>
     },
     {
         path:CONTACT_ROUTE,

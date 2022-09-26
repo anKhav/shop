@@ -7,6 +7,8 @@ import Contact from './pages/Contact/Contact'
 import Home from './pages/Home/Home'
 import Cart from './pages/Cart/Cart'
 import Admin from './pages/Admin/Admin'
+import Orders from "./pages/Admin/Orders/Orders";
+import Cabinet from "./pages/Cabinet/Cabinet"
 
 import {
     ABOUT_ROUTE,
@@ -16,12 +18,18 @@ import {
     CONTACT_ROUTE, CREATE_CATEGORY_ROUTE, CREATE_PRODUCT_ROUTE, CREATE_SIZE_ROUTE, DELETE_PRODUCT_ROUTE,
     HOME_ROUTE,
     PRODUCT_ROUTE, REGISTRATION_ROUTE,
+    ORDERS, CABINET
 } from "./utils/consts";
+
 
 export const authRoutes = [
     {
         path:ADMIN_ROUTE,
         element: <Admin/>
+    },
+    {
+        path:ADMIN_ROUTE + ORDERS,
+        element: <Orders/>
     },
     {
         path:ADMIN_ROUTE + CREATE_CATEGORY_ROUTE,
@@ -38,7 +46,11 @@ export const authRoutes = [
     {
         path:ADMIN_ROUTE + DELETE_PRODUCT_ROUTE,
         element: <Admin/>
-    }
+    },
+    {
+        path:CABINET,
+        element: <Cabinet/>
+    },
 ]
 export const publicRoutes = [
     {

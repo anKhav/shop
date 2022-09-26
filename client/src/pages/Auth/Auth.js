@@ -1,11 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Auth.scss'
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {createUser, loginUser} from "../../feature/user/userSlice";
 
 const Auth = () => {
     const location = useLocation()
     const isLogin = location.pathname === '/auth'
+    const dispatch = useDispatch()
+    const [user, setUser] = useState({email:'',password:'', isLogin})
+    const navigate = useNavigate()
+    console.log(user)
+
+    const register = (e) => {
+        e.preventDefault()
+        dispatch(createUser(user))
+    }
+    const login = async (e) => {
+        e.preventDefault()
+        setUser({...user,isLogin: true})
+        await dispatch(loginUser(user))
+        navigate("/cabinet")
+    }
+    const userSel = useSelector(state => state.user.user)
+    console.log(userSel)
 
 
     return (
@@ -15,11 +34,11 @@ const Auth = () => {
                 <form className='auth__form'>
                     <div className="email">
                         <label htmlFor="email-input" className="email__label">Email</label>
-                        <input type="email" className="email__input" id="email-input"/>
+                        <input value={user.email} onChange={(e) => setUser({...user, email:e.target.value})} type="email" className="email__input" id="email-input"/>
                     </div>
                     <div className="password">
                         <label htmlFor="password-input" className="password__label">Password</label>
-                        <input type="password" className="password__input" id="password-input"/>
+                        <input value={user.password} onChange={(e) => setUser({...user, password:e.target.value})} type="password" className="password__input" id="password-input"/>
                     </div>
                     <div className="auth__footer">
                         {isLogin ? <div>No account? <Link className='link' to='/registration'>Sign In</Link></div>
@@ -27,7 +46,7 @@ const Auth = () => {
                             <div>Have account? <Link className='link' to='/auth'>Login</Link></div>
                         }
 
-                        <MyBtn className="auth__btn">{isLogin ? 'Login' : 'Sign In'}</MyBtn>
+                        <MyBtn className="auth__btn" onClick={(e) => login(e)}>{isLogin ? 'Login' : 'Sign In'}</MyBtn>
                     </div>
                 </form>
             </div>

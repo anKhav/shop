@@ -6,21 +6,26 @@ import {createCategory, deleteCategory, getCategories} from "../../feature/categ
 const Categories = () => {
 
     const [category, setCategory] = useState({name:''})
+    const [refresh, setRefresh] = useState(false)
 
     const categories = useSelector(state => state.categories.categories)
     const dispatch = useDispatch()
     useEffect( () => {
         dispatch(getCategories())
-    },[dispatch])
+        console.log(refresh);
+    },[dispatch,refresh])
     let categoriesNames = categories.map(cat => cat.name)
 
-    const creatCategory = () => {
+    const creatCategory = (e) => {
+        e.preventDefault()
         dispatch(createCategory(category))
+        window.location.reload(false)
     }
 
-    const delCategory = () => {
+    const delCategory = (e) => {
+        e.preventDefault()
         dispatch(deleteCategory(category))
-        console.log(categoriesNames)
+        window.location.reload(false)
     }
     const chooseCategory = (e) => {
         setCategory({name:e.target.innerText})

@@ -1,30 +1,33 @@
 import React from 'react';
-import {NavLink, useLocation} from "react-router-dom";
+import {Link, NavLink, useLocation} from "react-router-dom";
 import './Admin.scss'
 
 import Categories from "../../components/Categories/Categories";
 import DeleteProduct from "./Product/DeleteProduct";
 import CreateProduct from "./Product/CreateProduct";
 
+
 const Admin = () => {
     const {pathname} = useLocation()
+
     return (
         <div className='section-inner admin'>
-            <div className="admin__header">
-                <NavLink className={({ isActive }) => (isActive ? "link link-active" : "link")} to='/admin/category'>
-                    Create category
-                </NavLink>
-                <NavLink className={({ isActive }) => (isActive ? "link link-active" : "link")} to='/admin/product/create'>
-                    Create product
-                </NavLink>
-                <NavLink className={({ isActive }) => (isActive ? "link link-active" : "link")} to='/admin/product/delete'>
-                    Delete product
-                </NavLink>
-            </div>
-            <div className="admin__content">
+            <div className="admin__wrapper">
+                <div className="admin__header">
+                    <NavLink className={({ isActive }) => (isActive ? "link link-active" : "link")} to='/admin/category'>
+                        Create category
+                    </NavLink>
+                    <NavLink className={({ isActive }) => (isActive ? "link link-active" : "link")} to='/admin/product/create'>
+                        Create product
+                    </NavLink>
+                    <NavLink className={({ isActive }) => (isActive ? "link link-active" : "link")} to='/admin/product/delete'>
+                        Delete product
+                    </NavLink>
+                </div>
+                <div className="admin__content">
                     {
                         pathname === '/admin/product/create' ?
-                                <CreateProduct/>
+                            <CreateProduct/>
                             :
                             (
                                 pathname === '/admin/product/delete' ? (
@@ -32,6 +35,8 @@ const Admin = () => {
                                 ) : <Categories/>
                             )
                     }
+                </div>
+                <Link to='/admin/orders'>Orders</Link>
             </div>
         </div>
     );

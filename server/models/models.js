@@ -5,6 +5,8 @@ const User = seauelize.define('user', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     email:{type: DataTypes.STRING, unique:true},
     password:{type: DataTypes.STRING},
+    isActivate:{type:DataTypes.BOOLEAN, defaultValue:false},
+    activationLink:{type:DataTypes.STRING},
     role:{type: DataTypes.STRING, defaultValue:'USER'},
 })
 
@@ -42,18 +44,20 @@ const Rating = seauelize.define('rating', {
     rate:{type: DataTypes.INTEGER, allowNull:false},
 })
 
-// const ProductInfo = seauelize.define('product_info', {
-//     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
-//     title:{type: DataTypes.STRING, allowNull:false},
-//     description:{type: DataTypes.STRING, allowNull:false},
-// })
 
 const SizeCategory = seauelize.define('size_category', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
 })
 
+const Token = seauelize.define('token', {
+    refreshToken:{type: DataTypes.STRING, required:true},
+})
+
 User.hasOne(Basket)
 Basket.belongsTo(User)
+
+User.hasOne(Token)
+Token.belongsTo(User)
 
 User.hasMany(Rating)
 Rating.belongsTo(User)
@@ -61,11 +65,6 @@ Rating.belongsTo(User)
 Basket.hasMany(BasketProduct)
 BasketProduct.belongsTo(Basket)
 
-// Size.hasMany(Product)
-// Product.belongsTo(Size)
-
-// Category.hasMany(Product)
-// Product.belongsTo(Category)
 
 Product.hasMany(Rating)
 Rating.belongsTo(Product)
@@ -73,12 +72,10 @@ Rating.belongsTo(Product)
 Product.hasMany(BasketProduct)
 BasketProduct.belongsTo(Product)
 
-// Product.hasMany(ProductInfo, {as:'info'})
-// ProductInfo.belongsTo(Product)
 
 Size.belongsToMany(Category, {through: SizeCategory})
 Category.belongsToMany(Size, {through: SizeCategory})
 
-module.exports = {User, Basket, BasketProduct, Product, Size, Category, Rating, SizeCategory}
+module.exports = {User, Basket, BasketProduct, Product, Size, Category, Rating, SizeCategory, Token}
 
 

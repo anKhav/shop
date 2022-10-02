@@ -1,17 +1,25 @@
-const jwt = require('jsonwebtoken')
+const ApiError = require('../error/ApiError')
+const tokenService = require('../service/tokenService')
 
-module.exports = function (req, res, next) {
-    if (req.method === 'OPTIONS'){
-        next()
-    } try {
-        const token = req.headers.authorization.split(' ')[1]
-        if (!token){
-            return res.status(401).json({message:"User doesnt auth"})
+module.exports = function (req,res, next) {
+    try{
+        const authorizationHeader = req.headers.authorization
+        if (!authorizationHeader){
+            return next(ApiError.badRequest('Unauthorized'))
         }
-        req.user  = jwt.verify(token, process.env.SECRET_KEY)
-        console.log(req.headers.authorization)
+
+        const accessToken = authorizationHeader.split(' ')[1]
+        if (!accessToken){
+            return next(ApiError.badRequest('Unauthorized'))
+        }
+
+        const userData = tokenService.validateAccessToken(accessToken)
+        if (!userData){
+            return next(ApiError.badRequest('Unauthorized'))
+        }
+        req.user = userData
         next()
-    } catch (e ){
-        res.status(401).json({message:"User doesnt auth"})
+    } catch (e) {
+        return next(ApiError.badRequest('Unauthorized'))
     }
 }

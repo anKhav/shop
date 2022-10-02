@@ -58,6 +58,29 @@ class UserService {
         const token = await tokenService.removeToken(refreshToken)
          return token
     }
+
+    async refresh (refreshToken, next){
+        if (!refreshToken){
+            return next(ApiError.badRequest('Unauthorized'))
+        }
+        const userData = tokenService.validateRefreshToken(refreshToken)
+        const tokenFromDb = tokenService.findToken(refreshToken)
+        if (!userData || !tokenFromDb){
+            return ApiError.badRequest('Unauthorized')
+        }
+        const user = await User.findOne({where:{id:userData.id}})
+
+        const userDto = new UserDto(user)
+        const tokens = tokenService.generateTokens({...userDto})
+
+        await tokenService.saveToken(userDto.id, tokens.refreshToken)
+        return {...tokens, user:userDto}
+    }
+
+    async getAllUsers() {
+        const users = await User.findAll()
+        return users
+    }
 }
 
 module.exports = new UserService()

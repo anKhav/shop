@@ -5,11 +5,11 @@ import {useSelector} from "react-redux";
 
 const AppRouter = () => {
 
-    const {isLogin} = useSelector(state => state.user.user)
+    const isAuth = useSelector(state => state.user)
 
     return (
         <Routes>
-            {isLogin && authRoutes.map(({path, element}) =>
+            {isAuth && authRoutes.map(({path, element}) =>
                 <Route key={Math.random()} path={path} element={element} exact/>
             )}
             {publicRoutes.map(item => <Route key={Math.random()} path={item.path} element={item.element} exact/>)}

@@ -107,7 +107,8 @@ class UserController {
             return res.json(userData)
 
         } catch (e){
-            return next(ApiError.badRequest(e.message))
+            // return next(ApiError.badRequest(e.message))
+            return res.json({message:'hello'})
         }
     }
 

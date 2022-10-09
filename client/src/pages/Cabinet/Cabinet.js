@@ -1,22 +1,26 @@
 import React from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {exitUser} from "../../feature/user/userSlice";
+import {logoutUser} from "../../feature/user/userSlice";
 import {useNavigate} from "react-router-dom";
+import axiosApi from "../../http/axios";
 
 const Cabinet = () => {
-    const dispatch = useDispatch()
+
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
+    const user = useSelector(state => state.user)
+    console.log(user)
 
-    const exit = async (e) => {
+    const logout = async (e) => {
         e.preventDefault()
-        await navigate("/")
-        dispatch(exitUser())
+        await dispatch(logoutUser())
+        navigate("/")
     }
     return (
         <div>
             Cabinet
-            <button onClick={e => exit(e)}>Exit</button>
+            <button onClick={e => logout(e)}>Exit</button>
         </div>
     );
 };

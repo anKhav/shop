@@ -3,19 +3,21 @@ import './Auth.scss'
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {createUser, loginUser} from "../../feature/user/userSlice";
+import {loginUser, registrationUser} from "../../feature/user/userSlice";
 
 const Auth = () => {
     const location = useLocation()
     const isLogin = location.pathname === '/auth'
     const dispatch = useDispatch()
-    const [user, setUser] = useState({email:'',password:'', isLogin})
+    const [user, setUser] = useState({email:'',password:''})
     const navigate = useNavigate()
-    console.log(user)
+    // console.log(localStorage)
 
-    const register = (e) => {
-        e.preventDefault()
-        dispatch(createUser(user))
+    const register = async (e) => {
+            e.preventDefault()
+            setUser({...user,isLogin: true})
+            await dispatch(registrationUser(user))
+            navigate("/cabinet")
     }
     const login = async (e) => {
         e.preventDefault()
@@ -24,7 +26,7 @@ const Auth = () => {
         navigate("/cabinet")
     }
     const userSel = useSelector(state => state.user.user)
-    console.log(userSel)
+    // console.log(userSel)
 
 
     return (
@@ -46,7 +48,8 @@ const Auth = () => {
                             <div>Have account? <Link className='link' to='/auth'>Login</Link></div>
                         }
 
-                        <MyBtn className="auth__btn" onClick={(e) => login(e)}>{isLogin ? 'Login' : 'Sign In'}</MyBtn>
+                        <MyBtn className="auth__btn" onClick={(e) => register(e)}>{'Sign In'}</MyBtn>
+                        <MyBtn className="auth__btn" onClick={(e) => login(e)}>{'Login'}</MyBtn>
                     </div>
                 </form>
             </div>

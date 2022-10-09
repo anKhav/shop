@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import Menu from "../../Menu/Menu";
 
 
@@ -16,15 +16,15 @@ const RightNav = () => {
         sum = 0
     }
 
-    const {isLogin} = useSelector(state => state.user.user)
+    const {isAuth} = useSelector(state => state.user)
 
 
     return (
         <div className='RightNav'>
-            {isLogin ?
+            {isAuth ?
                 <div className='RightNav__wrapper'>
                     <Link to='/admin'>Admin</Link>
-                    <Link className='right-nav__icon' to={isLogin ? '/cabinet' : '/auth'}><img src='/img/user_icon.svg' alt='user icon'/></Link>
+                    <Link className='right-nav__icon' to={isAuth ? '/cabinet' : '/auth'}><img src='/img/user_icon.svg' alt='user icon'/></Link>
                     <Link className='cart__link' to='/cart'>
                         <img src='/img/shopping-bag.svg' alt='cart icon' />
                         {cart.length === 0 ? false :

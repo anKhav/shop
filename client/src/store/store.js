@@ -5,6 +5,7 @@ import productSlice from "../feature/product/productSlice";
 import userSlice from "../feature/user/userSlice";
 import sizeSlice from "../feature/size/sizeSlice";
 import categorySLice from "../feature/category/categorySLice";
+import ordersSlice from "../feature/orders/ordersSlice";
 
 export const store = configureStore({
     reducer:{
@@ -13,7 +14,8 @@ export const store = configureStore({
         product:productSlice,
         user:userSlice,
         sizes:sizeSlice,
-        categories:categorySLice
+        categories:categorySLice,
+        orders:ordersSlice
     },
     middleware: [
     ...getDefaultMiddleware({

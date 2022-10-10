@@ -48,6 +48,7 @@
 // module.exports = new  UserController()
 
 const userService = require('../service/userService')
+const orderService = require('../service/orderService')
 const ApiError = require('../error/ApiError')
 const {validationResult} = require('express-validator')
 
@@ -81,6 +82,7 @@ class UserController {
     async logout(req, res, next) {
         try {
             const {refreshToken} = req.cookies
+            console.log(req.cookies)
             const token = await userService.logout(refreshToken)
             res.clearCookie('refreshToken')
             return res.json(token)
@@ -116,6 +118,31 @@ class UserController {
         try {
             const users = await userService.getAllUsers()
             return res.json(users)
+        } catch (e){
+            return ApiError.badRequest('No users')
+        }
+    }
+
+    async createOrder(req, res, next){
+        try {
+            const {id} = req.user
+            console.log(id);
+            const order = req.body
+
+            console.log(order);
+            const orders = await orderService.createOrder(order, id)
+            return res.json(orders)
+        } catch (e){
+            return ApiError.badRequest('No users')
+        }
+    }
+
+    async getOrders(req, res, next) {
+        try {
+            const {id} = req.user
+            console.log(id);
+            const orders = await orderService.getAllOrders(id)
+            return res.json(orders)
         } catch (e){
             return ApiError.badRequest('No users')
         }

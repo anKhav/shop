@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Auth.scss'
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import {Link, useLocation, useNavigate} from "react-router-dom";
@@ -11,7 +11,6 @@ const Auth = () => {
     const dispatch = useDispatch()
     const [user, setUser] = useState({email:'',password:''})
     const navigate = useNavigate()
-    // console.log(localStorage)
 
     const register = async (e) => {
             e.preventDefault()
@@ -26,7 +25,7 @@ const Auth = () => {
         navigate("/cabinet")
     }
     const userSel = useSelector(state => state.user.user)
-    // console.log(userSel)
+    console.log(userSel)
 
 
     return (

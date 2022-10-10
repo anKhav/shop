@@ -81,6 +81,7 @@ class UserService {
         const users = await User.findAll()
         return users
     }
+
 }
 
 module.exports = new UserService()

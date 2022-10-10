@@ -5,7 +5,6 @@ import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import Products from "../../components/Products/Products";
 
 import "./Home.scss"
-import {useSelector} from "react-redux";
 
 const Benefit = ({src, alt, title, descr}) => {
     return (
@@ -20,8 +19,6 @@ const Benefit = ({src, alt, title, descr}) => {
 };
 
 const Promo = ({title, descr}) => {
-    const isAuth = useSelector(state => state.user.isAuth)
-    console.log(isAuth)
     return (
         <div className='Promo promo'>
             <div className="promo__content">

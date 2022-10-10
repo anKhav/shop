@@ -10,6 +10,12 @@ const User = seauelize.define('user', {
     role:{type: DataTypes.STRING, defaultValue:'USER'},
 })
 
+const Order = seauelize.define('order', {
+    id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
+    products:{type:DataTypes.ARRAY(DataTypes.STRING)},
+    // products:{type:DataTypes.STRING},
+})
+
 const Basket = seauelize.define('basket', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
 })
@@ -56,6 +62,9 @@ const Token = seauelize.define('token', {
 User.hasOne(Basket)
 Basket.belongsTo(User)
 
+User.hasMany(Order)
+Order.belongsTo(User)
+
 User.hasOne(Token)
 Token.belongsTo(User)
 
@@ -76,6 +85,6 @@ BasketProduct.belongsTo(Product)
 Size.belongsToMany(Category, {through: SizeCategory})
 Category.belongsToMany(Size, {through: SizeCategory})
 
-module.exports = {User, Basket, BasketProduct, Product, Size, Category, Rating, SizeCategory, Token}
+module.exports = {User, Basket, BasketProduct, Product, Size, Category, Rating, SizeCategory, Token, Order}
 
 

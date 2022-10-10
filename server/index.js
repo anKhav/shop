@@ -16,7 +16,10 @@ const app = express()
 
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({
+    credentials:true,
+    origin:'http://localhost:3000'
+}))
 app.use(express.static(path.resolve(__dirname, 'static')))
 app.use(express.static(path.resolve(__dirname,'..', '..', 'client','public', 'img')))
 app.use(fileUpload({}))

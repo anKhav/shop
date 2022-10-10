@@ -1,17 +1,27 @@
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import CartProduct from "../../components/CartProduct/CartProduct";
 
 import './Checkout.scss'
+import {createOrder} from "../../feature/orders/ordersSlice";
 
 const Checkout = () => {
+    const dispatch = useDispatch()
+
     const cart = useSelector(state => state.cartProduct.cart)
     const sum = cart.reduce((accumulator, object) => {
-        return accumulator + object.price;
-    }, 0);
+        return accumulator + object.price * object.cartQuantity;
+    }, 0)
     console.log(cart)
+
+    const addOrder = async (e) => {
+        e.preventDefault()
+        dispatch(createOrder(cart))
+    }
+
+
 
 
     return (
@@ -69,7 +79,7 @@ const Checkout = () => {
                     Cash on delivery.
                     Please contact us if you require assistance or wish to make alternate arrangements.
                 </p>
-                <MyBtn className='checkout__btn'>Place Order</MyBtn>
+                <MyBtn className='checkout__btn' onClick={(e) => addOrder(e)}>Place Order</MyBtn>
             </div>
         </section>
     );

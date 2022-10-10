@@ -8,21 +8,17 @@ import AuthService from "../../services/AuthService";
 
 const initialState = {
     user:{},
-    isAuth:false
+    isAuth:false,
+    setLoading:false
 }
-// export const createUser = createAsyncThunk(
-//     'user/createUser',
-//     async ({email,password},{dispatch}) => {
-//          const res = await axios.post(`http://localhost:5000/api/user/registration`,{email,password})
-//         console.log(res)
-//         dispatch(addUser({email,password}))
-//     }
-// )
+
 export const loginUser = createAsyncThunk(
     'user/loginUser',
     async (user,{dispatch}) => {
        const response = await AuthService.login(user)
         localStorage.setItem('token', response.data.accessToken)
+        localStorage.setItem('user', user)
+        document.cookie = `email=${response.data.user.email}`
         console.log(response)
         dispatch(setAuth(true))
         dispatch(setUser(user))
@@ -34,6 +30,7 @@ export const registrationUser = createAsyncThunk(
     async (user,{dispatch}) => {
         const response = await AuthService.registration(user)
         localStorage.setItem('token', response.data.accessToken)
+        document.cookie = `email=${response.data.user.email}`
         console.log(response)
         dispatch(setAuth(true))
         dispatch(setUser(user))
@@ -42,12 +39,20 @@ export const registrationUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk(
     'user/logoutUser',
-    async (user,{dispatch}) => {
-        const response = await AuthService.logout()
-        localStorage.removeItem('token')
-        console.log(response)
-        dispatch(setAuth(false))
-        dispatch(setUser({}))
+    async (refreshToken,{dispatch}) => {
+        try {
+            setLoadingTrue(true)
+            console.log(true)
+            const response = await AuthService.logout()
+            localStorage.removeItem('token')
+            console.log(response)
+            dispatch(setAuth(false))
+            dispatch(setUser({}))
+        } catch (e){
+            console.log(e)
+        } finally {
+            setLoadingFalse(false)
+        }
     }
 )
 
@@ -56,12 +61,19 @@ export const logoutUser = createAsyncThunk(
 export const checkAuth = createAsyncThunk(
     'category/createCategory',
     async (user,{dispatch}) => {
-        const response = await axios.get(`http://localhost:5000/api/user/refresh`)
-        console.log(response)
+        try {
+            setLoadingTrue(true)
+            const response = await axios.get(`http://localhost:5000/api/user/refresh`)
 
-        localStorage.setItem('token', response.data.accessToken)
-        dispatch(setAuth(true))
-        dispatch(setUser(user))
+            localStorage.setItem('token', response.data.accessToken)
+            localStorage.setItem('refreshToken', response.data.refreshToken)
+            dispatch(setAuth(true))
+            dispatch(setUser(user))
+        } catch (e){
+            console.log(e)
+        } finally {
+            setLoadingFalse(false)
+        }
     }
 )
 
@@ -75,8 +87,14 @@ const userSlice = createSlice({
         setUser: (state, action) => {
             state.user = action.payload
         },
+        setLoadingTrue: state => {
+            state.setLoading = true
+        },
+        setLoadingFalse: state => {
+            state.setLoading = false
+        },
     },
 })
-export const {setAuth,setUser} = userSlice.actions
+export const {setAuth,setUser,setLoadingTrue, setLoadingFalse} = userSlice.actions
 
 export default userSlice.reducer

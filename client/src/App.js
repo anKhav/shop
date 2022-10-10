@@ -5,7 +5,7 @@ import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import AppRouter from "./components/AppRouter";
 import {useDispatch, useSelector} from "react-redux";
-import {checkAuth} from "./feature/user/userSlice";
+import {checkAuth, setLoadingTrue} from "./feature/user/userSlice";
 
 function App() {
     const dispatch = useDispatch()
@@ -15,14 +15,18 @@ function App() {
         }
     }, [])
 
-    const user = useSelector(state => state.user.email)
+
+
+    const setLoading = useSelector(state => state.setLoading)
+    dispatch(setLoadingTrue())
 
   return (
     <div className="App">
-        <h1>{user}</h1>
-        <Header/>
-        <AppRouter/>
-        <Footer className='footer'/>
+        {setLoading ? <h1>LOADING</h1>: <div>
+            <Header/>
+            <AppRouter/>
+            <Footer className='footer'/>
+        </div>}
     </div>
   );
 }

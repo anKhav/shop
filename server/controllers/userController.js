@@ -33,7 +33,6 @@ class UserController {
     async logout(req, res, next) {
         try {
             const {refreshToken} = req.cookies
-            console.log(req.cookies)
             const token = await userService.logout(refreshToken)
             res.clearCookie('refreshToken')
             return res.json(token)
@@ -52,20 +51,19 @@ class UserController {
         }
     }
 
-    async refresh(req, res, next) {
+    async refresh(req, res) {
         try {
             const {refreshToken} = req.cookies
+            console.log(req.cookies)
             const userData = await userService.refresh(refreshToken)
             res.cookie('refreshToken',userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 *1000, httpOnly:true} )
             return res.json(userData)
-
         } catch (e){
-            // return next(ApiError.badRequest(e.message))
-            return res.json({message:'hello'})
+            return ApiError.badRequest(e.message)
         }
     }
 
-    async getUsers(req, res, next) {
+    async getUsers(req, res) {
         try {
             const users = await userService.getAllUsers()
             return res.json(users)
@@ -77,10 +75,8 @@ class UserController {
     async createOrder(req, res, next){
         try {
             const {id} = req.user
-            console.log(id);
             const order = req.body
 
-            console.log(order);
             const orders = await orderService.createOrder(order, id)
             return res.json(orders)
         } catch (e){
@@ -91,7 +87,6 @@ class UserController {
     async getOrders(req, res, next) {
         try {
             const {id} = req.user
-            console.log(id);
             const orders = await orderService.getAllOrders(id)
             return res.json(orders)
         } catch (e){

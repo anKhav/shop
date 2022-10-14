@@ -12,7 +12,6 @@ export const createOrder = createAsyncThunk(
     async (order,{dispatch}) => {
         const response = await OrderService.createOrder(order)
         dispatch(addOrder(order))
-        console.log(response)
     }
 )
 
@@ -20,7 +19,6 @@ export const getAllOrders = createAsyncThunk(
     'orders/getAllOrders',
     async (__,{dispatch}) => {
         const response = await OrderService.getAllOrders()
-        console.log(response.data)
         dispatch(setOrders(response.data))
     }
 )

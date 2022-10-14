@@ -62,8 +62,8 @@ export const checkAuth = createAsyncThunk(
     'category/createCategory',
     async (user,{dispatch}) => {
         try {
-            setLoadingTrue(true)
             const response = await axios.get(`http://localhost:5000/api/user/refresh`)
+            console.log(response)
 
             localStorage.setItem('token', response.data.accessToken)
             localStorage.setItem('refreshToken', response.data.refreshToken)
@@ -71,8 +71,6 @@ export const checkAuth = createAsyncThunk(
             dispatch(setUser(user))
         } catch (e){
             console.log(e)
-        } finally {
-            setLoadingFalse(false)
         }
     }
 )

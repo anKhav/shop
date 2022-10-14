@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {logoutUser, setLoadingTrue} from "../../feature/user/userSlice";
+import {checkAuth, logoutUser, setLoadingTrue} from "../../feature/user/userSlice";
 import {useNavigate} from "react-router-dom";
 import {getAllOrders} from "../../feature/orders/ordersSlice";
+import Orders from "../../components/Orders/Orders";
+import './Cabinet.scss'
 
 const Cabinet = () => {
     const navigate = useNavigate()
@@ -10,11 +12,12 @@ const Cabinet = () => {
 
     useEffect(() => {
         dispatch(getAllOrders())
+        dispatch(checkAuth())
     },[])
 
     const orders = useSelector(state => state.orders.orders)
 
-    console.log(orders)
+    console.log(localStorage)
 
     function getCookie(name) {
         const value = `; ${document.cookie}`;
@@ -25,17 +28,17 @@ const Cabinet = () => {
 
     const mail = getCookie('email')
 
-    const logout = async (e) => {
+    const logout = async () => {
         await dispatch(logoutUser())
         navigate("/")
         dispatch(setLoadingTrue())
         window.location.reload()
     }
     return (
-        <div>
-            {`Cabinet ${mail}`}
-            {orders && <div>{orders.map((order, i) => <li>{order.products.map(product => <li>{JSON.parse(product).name}</li>)}</li>)}</div>}
-            <button onClick={e => logout(e)}>Exit</button>
+        <div className='cabinet'>
+            <h2 className='cabinet__title'>{mail}</h2>
+            {orders && <Orders orders={orders}/>}
+            <button className='cabinet__btn' onClick={e => logout(e)}>Exit</button>
         </div>
     );
 };

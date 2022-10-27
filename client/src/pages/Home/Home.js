@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import Products from "../../components/Products/Products";
 
-import "./Home.scss"
 
 const Benefit = ({src, alt, title, descr}) => {
     return (
@@ -50,7 +49,7 @@ const Home = () => {
                 </div>
             </section>
             <section className="section_outer">
-                <div className="section_inner container new-products">
+                <div className="section-inner container new-products">
                     <h2 className="container__title new-products__title">
                         Discover NEW Arrivals
                     </h2>
@@ -98,7 +97,7 @@ const Home = () => {
                     descr='End of season sale. Buy any 2 items of your choice and get 1 free.'
                 />
             </section>
-            <section className="section-inner">
+            <section className="section-inner top-sellers-wrapper">
                 <div className="container top-sellers">
                     <h3 className="container__title top-sellers__title">Top Sellers</h3>
                     <h4 className="container__subtitle top-sellers__subtitle">Browse our top selling products</h4>

@@ -1,5 +1,4 @@
 import React from 'react';
-import './order.scss'
 import OrderProduct from "./OrderProduct/OrderProduct";
 
 const Order = ({order, className}) => {
@@ -8,7 +7,7 @@ const Order = ({order, className}) => {
     return (
         <div className='order'>
             <h2 className='order__title'>{`Order ${order.id}`}</h2>
-            {products.map(product => <OrderProduct key={product.id} product={product}/>)}
+            {products.map((product,i) => <OrderProduct key={i} product={product}/>)}
         </div>
     );
 };

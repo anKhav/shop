@@ -1,5 +1,4 @@
 import React from "react";
-import './Rating.scss'
 
 const Rating = ({rating}) => {
     return (

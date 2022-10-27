@@ -6,10 +6,11 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 import AuthService from "../../services/AuthService";
 
+
 const initialState = {
-    user:{},
+    user:null,
     isAuth:false,
-    setLoading:false
+    isLoading:false,
 }
 
 export const loginUser = createAsyncThunk(
@@ -17,9 +18,9 @@ export const loginUser = createAsyncThunk(
     async (user,{dispatch}) => {
        const response = await AuthService.login(user)
         localStorage.setItem('token', response.data.accessToken)
-        localStorage.setItem('user', user)
+        localStorage.setItem('user', JSON.stringify(user))
         document.cookie = `email=${response.data.user.email}`
-        console.log(response)
+        console.log(localStorage)
         dispatch(setAuth(true))
         dispatch(setUser(user))
     }
@@ -41,17 +42,15 @@ export const logoutUser = createAsyncThunk(
     'user/logoutUser',
     async (refreshToken,{dispatch}) => {
         try {
-            setLoadingTrue(true)
-            console.log(true)
+            setLoading(true)
             const response = await AuthService.logout()
             localStorage.removeItem('token')
-            console.log(response)
             dispatch(setAuth(false))
-            dispatch(setUser({}))
+            dispatch(setUser(null))
         } catch (e){
             console.log(e)
         } finally {
-            setLoadingFalse(false)
+            console.log('finnaly')
         }
     }
 )
@@ -59,16 +58,17 @@ export const logoutUser = createAsyncThunk(
 
 
 export const checkAuth = createAsyncThunk(
-    'category/createCategory',
+    'user/checkAuth',
     async (user,{dispatch}) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/user/refresh`)
-            console.log(response)
+            const response = await axios.get(`http://localhost:5000/api/user/refresh`,{withCredentials:true})
+            const {user} = response.data
 
-            localStorage.setItem('token', response.data.accessToken)
+            // localStorage.setItem('token', response.data.accessToken)
             localStorage.setItem('refreshToken', response.data.refreshToken)
             dispatch(setAuth(true))
             dispatch(setUser(user))
+            console.log(user)
         } catch (e){
             console.log(e)
         }
@@ -85,14 +85,11 @@ const userSlice = createSlice({
         setUser: (state, action) => {
             state.user = action.payload
         },
-        setLoadingTrue: state => {
-            state.setLoading = true
-        },
-        setLoadingFalse: state => {
-            state.setLoading = false
-        },
+        setLoading: (state,action) => {
+            state.isLoading = action.payload
+        }
     },
 })
-export const {setAuth,setUser,setLoadingTrue, setLoadingFalse} = userSlice.actions
+export const {setAuth,setUser,setLoading} = userSlice.actions
 
 export default userSlice.reducer

@@ -8,8 +8,6 @@ import MyBtn from "../../components/UI/MyBtn/MyBtn";
 
 import {getOneProduct} from "../../feature/product/productSlice";
 
-
-import './SingleProduct.scss'
 import {setCartProduct} from "../../feature/cartProduct/cartProductSlice";
 const SingleProduct = () => {
 

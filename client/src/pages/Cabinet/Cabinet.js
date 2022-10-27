@@ -1,23 +1,23 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {checkAuth, logoutUser, setLoadingTrue} from "../../feature/user/userSlice";
 import {useNavigate} from "react-router-dom";
 import {getAllOrders} from "../../feature/orders/ordersSlice";
 import Orders from "../../components/Orders/Orders";
-import './Cabinet.scss'
 
 const Cabinet = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const [isLogin, setIsLogin] = useState(true)
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         dispatch(getAllOrders())
         dispatch(checkAuth())
-    },[])
+    },[isLogin])
+
 
     const orders = useSelector(state => state.orders.orders)
 
-    console.log(localStorage)
 
     function getCookie(name) {
         const value = `; ${document.cookie}`;
@@ -31,14 +31,14 @@ const Cabinet = () => {
     const logout = async () => {
         await dispatch(logoutUser())
         navigate("/")
-        dispatch(setLoadingTrue())
-        window.location.reload()
+        setIsLogin(false)
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
     }
     return (
         <div className='cabinet'>
+            <button className='cabinet__btn' onClick={e => logout(e)}>Exit</button>
             <h2 className='cabinet__title'>{mail}</h2>
             {orders && <Orders orders={orders}/>}
-            <button className='cabinet__btn' onClick={e => logout(e)}>Exit</button>
         </div>
     );
 };

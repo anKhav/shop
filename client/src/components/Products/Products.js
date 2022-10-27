@@ -10,7 +10,6 @@ const Products = ({className}) => {
         dispatch(getProducts())
     },[dispatch])
     const products = useSelector(state => state.products.products)
-    console.log(products)
 
     return (
         <div className={className}>

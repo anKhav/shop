@@ -1,28 +1,28 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useLayoutEffect, useState} from 'react';
 import './reset.css'
 import './App.scss'
+import './styles/index.scss'
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import AppRouter from "./components/AppRouter";
-import {useDispatch, useSelector} from "react-redux";
-import {checkAuth, setLoadingTrue} from "./feature/user/userSlice";
+import {useDispatch} from "react-redux";
+import {checkAuth} from "./feature/user/userSlice";
 
 function App() {
     const dispatch = useDispatch()
+
     useEffect(() => {
         if (localStorage.getItem('token')){
             dispatch(checkAuth())
         }
     }, [])
 
+    localStorage.removeItem('refreshToken')
+    console.log(localStorage);
 
-
-    const setLoading = useSelector(state => state.setLoading)
-    dispatch(setLoadingTrue())
-
-  return (
+    return (
     <div className="App">
-        {setLoading ? <h1>LOADING</h1>: <div>
+        {<div>
             <Header/>
             <AppRouter/>
             <Footer className='footer'/>

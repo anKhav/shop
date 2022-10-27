@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import './Auth.scss'
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -24,8 +23,6 @@ const Auth = () => {
         await dispatch(loginUser(user))
         navigate("/cabinet")
     }
-    const userSel = useSelector(state => state.user.user)
-    console.log(userSel)
 
 
     return (

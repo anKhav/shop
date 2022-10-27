@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 
-import './Product.scss'
 
 import {deleteProduct, getProducts} from "../../../feature/products/productsSlice";
 import {useDispatch, useSelector} from "react-redux";

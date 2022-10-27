@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import MyBtn from "../UI/MyBtn/MyBtn";
 import axios from 'axios'
 
-import './MyForm.scss'
 
 const MyForm = () => {
 

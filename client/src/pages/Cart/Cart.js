@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import CartProduct from "../../components/CartProduct/CartProduct";
 
-import './Cart.scss'
 
 const Cart = () => {
     const cart = useSelector(state => state.cartProduct.cart)

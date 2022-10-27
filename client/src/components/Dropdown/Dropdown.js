@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import './Dropdown.scss'
 import DropdownItem from "./DropdownItem/DropdownItem";
 
 const Dropdown = ({obj, selected,setSelected, closable, onClick}) => {

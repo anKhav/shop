@@ -1,7 +1,6 @@
 import React from 'react';
 import {useDispatch} from "react-redux";
 import {removeProduct} from "../../feature/cartProduct/cartProductSlice";
-import './CartProduct.scss'
 
 const CartProduct = ({name, size, price, img, id, className, value, total, onChange}) => {
     const dispatch = useDispatch()

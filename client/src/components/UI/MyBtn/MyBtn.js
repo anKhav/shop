@@ -1,5 +1,4 @@
 import React from 'react';
-import './MyBtn.css'
 
 const MyBtn = ({id,type, onClick, children,className, disabled}) => {
     return (

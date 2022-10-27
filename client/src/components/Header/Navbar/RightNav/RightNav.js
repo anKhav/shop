@@ -6,6 +6,7 @@ import Menu from "../../Menu/Menu";
 
 const RightNav = () => {
     const cart = useSelector(state => state.cartProduct.cart)
+    const {user} = useSelector(state => state.user)
     let sum = []
     if (cart.length !== 0){
         const sumWithInitial = cart.map(item => item.cartQuantity).reduce(
@@ -17,11 +18,13 @@ const RightNav = () => {
     }
 
     const {isAuth} = useSelector(state => state.user)
+    console.log(user)
+
 
 
     return (
         <div className='RightNav'>
-            {isAuth ?
+            {user ?
                 <div className='RightNav__wrapper'>
                     <Link to='/admin'>Admin</Link>
                     <Link className='right-nav__icon' to={isAuth ? '/cabinet' : '/auth'}><img src='/img/user_icon.svg' alt='user icon'/></Link>

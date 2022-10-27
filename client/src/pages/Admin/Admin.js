@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link, NavLink, useLocation} from "react-router-dom";
-import './Admin.scss'
 
 import Categories from "../../components/Categories/Categories";
 import DeleteProduct from "./Product/DeleteProduct";

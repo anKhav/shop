@@ -2,7 +2,6 @@ import React from 'react';
 
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 
-import './About.scss'
 
 const About = () => {
 

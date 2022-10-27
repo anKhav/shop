@@ -4,7 +4,6 @@ import {useSelector} from "react-redux";
 
 import Product from "../../components/Products/Product/Product";
 
-import './Shop.scss'
 
 const Shop = () => {
     const products = useSelector(state => state.products)

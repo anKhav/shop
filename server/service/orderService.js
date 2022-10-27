@@ -3,7 +3,6 @@ const {Order} = require("../models/models");
 class OrderService {
     async getAllOrders(userId) {
         const orders = await Order.findAll({where:{userId:userId}})
-        console.log(orders)
         return orders
     }
 

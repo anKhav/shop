@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import CartProduct from "../../components/CartProduct/CartProduct";
 
-import './Checkout.scss'
 import {createOrder} from "../../feature/orders/ordersSlice";
 
 const Checkout = () => {

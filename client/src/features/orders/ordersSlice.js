@@ -3,7 +3,8 @@ import OrderService from "../../services/OrderService";
 
 const initialState = {
     order:[],
-    orders:[]
+    orders:[],
+    allOrders:[]
 }
 
 
@@ -15,11 +16,18 @@ export const createOrder = createAsyncThunk(
     }
 )
 
+export const getAllUserOrders = createAsyncThunk(
+    'orders/getAllOrders',
+    async (__,{dispatch}) => {
+        const response = await OrderService.getAllUserOrders()
+        dispatch(setOrders(response.data))
+    }
+)
 export const getAllOrders = createAsyncThunk(
     'orders/getAllOrders',
     async (__,{dispatch}) => {
         const response = await OrderService.getAllOrders()
-        dispatch(setOrders(response.data))
+        dispatch(setAllOrders(response.data))
     }
 )
 
@@ -34,9 +42,15 @@ const ordersSlice = createSlice({
         setOrders: (state, action) => {
             state.orders = action.payload
         },
+        setAllOrders: (state, action) => {
+            state.allOrders = action.payload
+        },
+        clearOrders: (state, action) => {
+            state.orders = []
+        },
 
     },
 })
-export const {addOrder,setOrders} = ordersSlice.actions
+export const {addOrder,setOrders,clearOrders, setAllOrders} = ordersSlice.actions
 
 export default ordersSlice.reducer

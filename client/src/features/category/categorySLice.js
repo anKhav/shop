@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
+import {SERVER_URL} from "../../utils/consts";
 
 const initialState = {
     categories:[]
@@ -8,21 +9,21 @@ const initialState = {
 export const getCategories = createAsyncThunk(
     'category/getCategories',
     async (__,{ dispatch}) => {
-        const res = await axios.get(`http://localhost:5000/api/category`)
+        const res = await axios.get(`${SERVER_URL}/api/category`)
         dispatch(setCategories(res.data))
     }
 )
 export const createCategory = createAsyncThunk(
     'category/createCategory',
     async ({name},{dispatch}) => {
-        await axios.post(`http://localhost:5000/api/category`,{name})
+        await axios.post(`${SERVER_URL}/api/category`,{name})
         dispatch(addCategories({name}))
     }
 )
 export const deleteCategory = createAsyncThunk(
     'category/deleteCategory',
     async (obj,{dispatch}) => {
-        await axios.delete(`http://localhost:5000/api/category`,{data:obj})
+        await axios.delete(`${SERVER_URL}/api/category`,{data:obj})
         dispatch(delCategory({obj}))
     }
 )

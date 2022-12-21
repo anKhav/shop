@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 
 import {useDispatch, useSelector} from "react-redux";
-import {createCategory, deleteCategory, getCategories} from "../../feature/category/categorySLice";
+import {createCategory, deleteCategory, getCategories} from "../../features/category/categorySLice";
 
 const Categories = () => {
 
@@ -12,7 +12,6 @@ const Categories = () => {
     const dispatch = useDispatch()
     useEffect( () => {
         dispatch(getCategories())
-        console.log(refresh);
     },[dispatch,refresh])
     let categoriesNames = categories.map(cat => cat.name)
 

@@ -4,6 +4,7 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
 import axios from 'axios'
+import {SERVER_URL} from "../../utils/consts";
 
 const initialState = {
     products:[],
@@ -12,7 +13,7 @@ const initialState = {
 export const getProducts = createAsyncThunk(
     'products/getProducts',
     async (__,{ dispatch}) => {
-        const res = await axios.get('http://localhost:5000/api/product')
+        const res = await axios.get(`${SERVER_URL}/api/product`)
         dispatch(setProducts(res.data.rows))
     }
 )
@@ -20,7 +21,7 @@ export const getProducts = createAsyncThunk(
 export const createProduct = createAsyncThunk(
     'products/createProduct',
     async ({name,price,img,sizes,categories},{ dispatch}) => {
-        await axios.post(`http://localhost:5000/api/product`,{name,price,img,sizes,categories},{headers: {
+        await axios.post(`${SERVER_URL}/api/product`,{name,price,img,sizes,categories},{headers: {
                 'content-type': 'multipart/form-data'
             }})
         dispatch(addProduct({name,price,sizes,categories}))
@@ -30,7 +31,7 @@ export const deleteProduct = createAsyncThunk(
     'category/deleteCategory',
     async (id,{dispatch}) => {
         console.log(id)
-        await axios.delete(`http://localhost:5000/api/product`,{data:id})
+        await axios.delete(`${SERVER_URL}/api/product`,{data:id})
         dispatch(delProduct())
     }
 )

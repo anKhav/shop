@@ -5,7 +5,10 @@ export default class OrderService {
         return axiosApi.post('/user/orders', order)
     }
 
-    static async getAllOrders () {
+    static async getAllUserOrders () {
         return axiosApi.get('/user/orders')
+    }
+    static async getAllOrders () {
+        return axiosApi.get('/user/allorders')
     }
 }

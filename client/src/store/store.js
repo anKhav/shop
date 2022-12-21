@@ -1,11 +1,11 @@
 import {configureStore, getDefaultMiddleware} from "@reduxjs/toolkit";
-import productsSlice from "../feature/products/productsSlice";
-import cartProduct from "../feature/cartProduct/cartProductSlice";
-import productSlice from "../feature/product/productSlice";
-import userSlice from "../feature/user/userSlice";
-import sizeSlice from "../feature/size/sizeSlice";
-import categorySLice from "../feature/category/categorySLice";
-import ordersSlice from "../feature/orders/ordersSlice";
+import productsSlice from "../features/products/productsSlice";
+import cartProduct from "../features/cartProduct/cartProductSlice";
+import productSlice from "../features/product/productSlice";
+import userSlice from "../features/user/userSlice";
+import sizeSlice from "../features/size/sizeSlice";
+import categorySLice from "../features/category/categorySLice";
+import ordersSlice from "../features/orders/ordersSlice";
 
 export const store = configureStore({
     reducer:{

@@ -1,17 +1,18 @@
-import React, {useEffect, useLayoutEffect, useState} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {checkAuth, logoutUser, setLoadingTrue} from "../../feature/user/userSlice";
+import {checkAuth, deleteUser, logoutUser} from "../../features/user/userSlice";
 import {useNavigate} from "react-router-dom";
-import {getAllOrders} from "../../feature/orders/ordersSlice";
+import {clearOrders, getAllUserOrders} from "../../features/orders/ordersSlice";
 import Orders from "../../components/Orders/Orders";
 
 const Cabinet = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [isLogin, setIsLogin] = useState(true)
+    const {user} = useSelector(state => state.user)
 
     useLayoutEffect(() => {
-        dispatch(getAllOrders())
+        dispatch(getAllUserOrders())
         dispatch(checkAuth())
     },[isLogin])
 
@@ -19,25 +20,27 @@ const Cabinet = () => {
     const orders = useSelector(state => state.orders.orders)
 
 
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-    }
-
-
-    const mail = getCookie('email')
 
     const logout = async () => {
-        await dispatch(logoutUser())
         navigate("/")
+        await dispatch(logoutUser())
+        await dispatch(clearOrders())
         setIsLogin(false)
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
     }
+
+    // const deleteAccount = async () => {
+    //     await dispatch(deleteUser(user.id))
+    //     await dispatch(clearOrders())
+    //     navigate("/")
+    //     setIsLogin(false)
+    //     window.scrollTo({top: 0, left: 0, behavior: 'smooth'})
+    // }
     return (
         <div className='cabinet'>
             <button className='cabinet__btn' onClick={e => logout(e)}>Exit</button>
-            <h2 className='cabinet__title'>{mail}</h2>
+            {/*<button className='cabinet__btn' onClick={e => deleteAccount(e)}>Delete Account</button>*/}
+            <h2 className='cabinet__title'>{user.email}</h2>
             {orders && <Orders orders={orders}/>}
         </div>
     );

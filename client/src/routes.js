@@ -24,6 +24,12 @@ import {
 
 export const authRoutes = [
     {
+        path:CABINET,
+        element: <Cabinet/>
+    },
+]
+export const adminRoutes = [
+    {
         path:ADMIN_ROUTE,
         element: <Admin/>
     },
@@ -46,10 +52,6 @@ export const authRoutes = [
     {
         path:ADMIN_ROUTE + DELETE_PRODUCT_ROUTE,
         element: <Admin/>
-    },
-    {
-        path:CABINET,
-        element: <Cabinet/>
     },
 ]
 export const publicRoutes = [

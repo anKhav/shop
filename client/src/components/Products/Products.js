@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import Product from "./Product/Product";
 import {useDispatch, useSelector} from "react-redux";
-import {getProducts} from "../../feature/products/productsSlice";
+import {getProducts} from "../../features/products/productsSlice";
+import {SERVER_URL} from "../../utils/consts";
 
 const Products = ({className}) => {
     const dispatch = useDispatch()
@@ -19,7 +20,7 @@ const Products = ({className}) => {
                         products.map(product => {
                             return <Product
                                 key={product.id}
-                                src={`http://localhost:5000/${product.img}`}
+                                src={`${SERVER_URL}/${product.img}`}
                                 name={product.name}
                                 price={product.price}
                                 id={product.id}

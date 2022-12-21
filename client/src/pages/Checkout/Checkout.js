@@ -4,10 +4,12 @@ import {useDispatch, useSelector} from "react-redux";
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import CartProduct from "../../components/CartProduct/CartProduct";
 
-import {createOrder} from "../../feature/orders/ordersSlice";
+import {createOrder} from "../../features/orders/ordersSlice";
 
 const Checkout = () => {
     const dispatch = useDispatch()
+    const isAuth = useSelector(state => state.user.isAuth)
+    console.log(isAuth)
 
     const cart = useSelector(state => state.cartProduct.cart)
     const sum = cart.reduce((accumulator, object) => {
@@ -17,7 +19,7 @@ const Checkout = () => {
 
     const addOrder = async (e) => {
         e.preventDefault()
-        dispatch(createOrder(cart))
+        isAuth && dispatch(createOrder(cart))
     }
 
 

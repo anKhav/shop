@@ -1,8 +1,9 @@
 import axios from 'axios';
+import {SERVER_URL} from "../utils/consts";
 
 const axiosApi = axios.create({
     withCredentials:true,
-    baseURL:'http://localhost:5000/api'
+    baseURL:`${SERVER_URL}/api`
 })
 
 axiosApi.interceptors.request.use((config) => {

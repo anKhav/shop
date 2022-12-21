@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 
 
-import {deleteProduct, getProducts} from "../../../feature/products/productsSlice";
+import {deleteProduct, getProducts} from "../../../features/products/productsSlice";
 import {useDispatch, useSelector} from "react-redux";
 import MyBtn from "../../../components/UI/MyBtn/MyBtn";
 

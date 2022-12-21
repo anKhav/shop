@@ -19,7 +19,7 @@ class UserService {
         const hashPassword = await bcrypt.hash(password, 5)
         const activationLink = uuid.v4()
 
-        const user = await User.create({email, role, password: hashPassword, activationLink})
+        const user = await User.create({email, role, password: hashPassword, activationLink, isActivate:false})
         await mailService.sendActivationMail(email, `http://localhost:5000/api/user/activate/${activationLink}`)
 
         const userDto = new UserDto(user)
@@ -52,6 +52,14 @@ class UserService {
 
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
         return {...tokens, user:userDto}
+    }
+
+    async delete (id) {
+        const user = await User.destroy({where:{id}})
+        if (!user){
+            return next(ApiError.badRequest('User undefined'))
+        }
+        return user
     }
 
     async logout (refreshToken){

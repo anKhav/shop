@@ -1,12 +1,12 @@
-import React, {useEffect, useLayoutEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './reset.css'
 import './App.scss'
 import './styles/index.scss'
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import AppRouter from "./components/AppRouter";
+import AppRouter from "./AppRouter";
 import {useDispatch} from "react-redux";
-import {checkAuth} from "./feature/user/userSlice";
+import {checkAuth} from "./features/user/userSlice";
 
 function App() {
     const dispatch = useDispatch()
@@ -18,7 +18,6 @@ function App() {
     }, [])
 
     localStorage.removeItem('refreshToken')
-    console.log(localStorage);
 
     return (
     <div className="App">

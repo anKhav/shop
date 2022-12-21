@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import CartProduct from "../../components/CartProduct/CartProduct";
+import {SERVER_URL} from "../../utils/consts";
 
 
 const Cart = () => {
@@ -32,7 +33,7 @@ const Cart = () => {
                                 key={i} name={product.name}
                                 price={product.price}
                                 size={product.sizes}
-                                img={`http://localhost:5000/${product.img}`}
+                                img={`${SERVER_URL}/${product.img}`}
                                 number={product.numbers}
                                 total={Number(product.cartQuantity) * Number(product.price)}
                                 value={product.cartQuantity}

@@ -30,6 +30,17 @@ class UserController {
         }
     }
 
+    async delete(req, res, next) {
+        try {
+            const id = Number(req.params.id)
+            const deletedOrders = await orderService.deleteOrder(id)
+            const userData = await userService.delete(id, next)
+            return res.json({...userData,...deletedOrders})
+        } catch (e){
+            return next(ApiError.badRequest(e.message))
+        }
+    }
+
     async logout(req, res, next) {
         try {
             const {refreshToken} = req.cookies
@@ -86,7 +97,7 @@ class UserController {
     async getOrders(req, res, next) {
         try {
             const {id} = req.user
-            const orders = await orderService.getAllOrders(id)
+            const orders = await orderService.getAllUserOrders(id)
             return res.json(orders)
         } catch (e){
             return ApiError.badRequest('No users')

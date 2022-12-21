@@ -6,9 +6,10 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import Rating from '../../components/Products/Product/Rating/Rating'
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 
-import {getOneProduct} from "../../feature/product/productSlice";
+import {getOneProduct} from "../../features/product/productSlice";
 
-import {setCartProduct} from "../../feature/cartProduct/cartProductSlice";
+import {setCartProduct} from "../../features/cartProduct/cartProductSlice";
+import {SERVER_URL} from "../../utils/consts";
 const SingleProduct = () => {
 
     const {id} = useParams()
@@ -41,7 +42,7 @@ const SingleProduct = () => {
                         <div className="section-inner product">
                             <div className="product__wrapper">
                                 <div className="product__img">
-                                    <img src={`http://localhost:5000/${product.img}`} alt={product.name}/>
+                                    <img src={`${SERVER_URL}/${product.img}`} alt={product.name}/>
                                 </div>
                                 <div className="product__content">
                                     <h2 className="product__title">

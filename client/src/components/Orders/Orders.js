@@ -4,7 +4,7 @@ import Order from './Order/Order'
 const Orders = ({orders}) => {
     return (
         <div className='orders'>
-            {orders.map((order, i) => <Order key={i} order={order}/>)}
+            {orders.map((order, i) => <Order key={i} order={order} i={i}/>)}
         </div>
     );
 };

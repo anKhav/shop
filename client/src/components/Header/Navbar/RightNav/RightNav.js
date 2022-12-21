@@ -18,7 +18,7 @@ const RightNav = () => {
     }
 
     const {isAuth} = useSelector(state => state.user)
-    console.log(user)
+    const role = user ? user.role : null
 
 
 
@@ -26,7 +26,7 @@ const RightNav = () => {
         <div className='RightNav'>
             {user ?
                 <div className='RightNav__wrapper'>
-                    <Link to='/admin'>Admin</Link>
+                    {role === "ADMIN" ? <Link to='/admin'>Admin</Link> : null}
                     <Link className='right-nav__icon' to={isAuth ? '/cabinet' : '/auth'}><img src='/img/user_icon.svg' alt='user icon'/></Link>
                     <Link className='cart__link' to='/cart'>
                         <img src='/img/shopping-bag.svg' alt='cart icon' />

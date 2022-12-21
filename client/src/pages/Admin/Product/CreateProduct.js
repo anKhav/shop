@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import Dropdown from "../../../components/Dropdown/Dropdown";
 import MyBtn from "../../../components/UI/MyBtn/MyBtn";
-import {createProduct} from "../../../feature/products/productsSlice";
+import {createProduct} from "../../../features/products/productsSlice";
 import {useDispatch, useSelector} from "react-redux";
-import {getSizes} from "../../../feature/size/sizeSlice";
-import {getCategories} from "../../../feature/category/categorySLice";
+import {getSizes} from "../../../features/size/sizeSlice";
+import {getCategories} from "../../../features/category/categorySLice";
 
 const CreateProduct = () => {
 
@@ -68,51 +68,53 @@ const CreateProduct = () => {
 
     return (
             <div className='products-create'>
-                <div>
-                    <input
-                        value={selectedName}
-                        onChange={(e) => setSelectedName(e.target.value)}
-                        type="text"
-                        className='dropdown__item'
-                        placeholder='Product Name'
-                    />
-                    <input
-                        value={selectedPrice}
-                        onChange={(e) => setSelectedPrice(e.target.value)}
-                        type="number"
-                        min={1}
-                        className='dropdown__item'
-                        placeholder='Product Price'
-                    />
-                    <label htmlFor="input-file" className="custom-file-upload dropdown__item">
-                        {image ? image.name : "Select File"}
-                    </label>
-                    <input
-                        id="input-file"
-                        onChange={changeHandler}
-                        type="file"
-                        placeholder='Product Img'
-                    />
-                    <Dropdown
-                        selected={selectedSize}
-                        setSelected={setSelectedSize}
-                        obj={sizes}
-                        onClick={(e) => handleSizes(e)}
-                    />
-                    <Dropdown
-                        closable={false}
-                        selected={selectedCategory}
-                        setSelected={setSelectedCategory}
-                        obj={categories}
-                        onClick={(e) => handleCat(e)}
-                    />
-                </div>
-                <div className="admin__product">
-                    <h3 className="product__info">Name: {createNewProduct().name}</h3>
-                    <span className="product__info">Price: {createNewProduct().price} $</span>
-                    <span className="product__info">Sizes: {createNewProduct().sizes}</span>
-                    <span className="product__info">Categories: {createNewProduct().categories}</span>
-                    {image ? <img className="product__info product__img" src={selectedImgUrl} alt="Product img"/> : false}
+                <div className="wrapper">
+                    <div className='form'>
+                        <input
+                            value={selectedName}
+                            onChange={(e) => setSelectedName(e.target.value)}
+                            type="text"
+                            className='dropdown__item'
+                            placeholder='Product Name'
+                        />
+                        <input
+                            value={selectedPrice}
+                            onChange={(e) => setSelectedPrice(e.target.value)}
+                            type="number"
+                            min={1}
+                            className='dropdown__item'
+                            placeholder='Product Price'
+                        />
+                        <label htmlFor="input-file" className="custom-file-upload dropdown__item">
+                            {image ? image.name : "Select File"}
+                        </label>
+                        <input
+                            id="input-file"
+                            onChange={changeHandler}
+                            type="file"
+                            placeholder='Product Img'
+                        />
+                        <Dropdown
+                            selected={selectedSize}
+                            setSelected={setSelectedSize}
+                            obj={sizes}
+                            onClick={(e) => handleSizes(e)}
+                        />
+                        <Dropdown
+                            closable={false}
+                            selected={selectedCategory}
+                            setSelected={setSelectedCategory}
+                            obj={categories}
+                            onClick={(e) => handleCat(e)}
+                        />
+                    </div>
+                    <div className="admin__product">
+                        <h3 className="product__info">Name: {createNewProduct().name}</h3>
+                        <span className="product__info">Price: {createNewProduct().price} $</span>
+                        <span className="product__info">Sizes: {createNewProduct().sizes}</span>
+                        <span className="product__info">Categories: {createNewProduct().categories}</span>
+                        {image ? <img className="product__info product__img" src={selectedImgUrl} alt="Product img"/> : false}
+                    </div>
                 </div>
                 <MyBtn
                     type='submit'

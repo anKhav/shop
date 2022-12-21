@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
+import {SERVER_URL} from "../../utils/consts";
 
 const initialState = {
     sizes:[]
@@ -8,7 +9,7 @@ const initialState = {
 export const getSizes = createAsyncThunk(
     'sizes/getSizes',
     async (__,{ dispatch}) => {
-        const res = await axios.get(`http://localhost:5000/api/size/`)
+        const res = await axios.get(`${SERVER_URL}/api/size/`)
         dispatch(setSize(res.data))
     }
 )

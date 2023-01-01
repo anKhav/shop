@@ -14,10 +14,10 @@ function App() {
     useEffect(() => {
         if (localStorage.getItem('token')){
             dispatch(checkAuth())
+            console.log('1as')
         }
     }, [])
 
-    localStorage.removeItem('refreshToken')
 
     return (
     <div className="App">

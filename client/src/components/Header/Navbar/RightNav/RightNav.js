@@ -9,7 +9,7 @@ const RightNav = () => {
     const {user} = useSelector(state => state.user)
     let sum = []
     if (cart.length !== 0){
-        const sumWithInitial = cart.map(item => item.cartQuantity).reduce(
+        const sumWithInitial = cart.map(item => item.quantity).reduce(
             (previousValue, currentValue) => previousValue + currentValue
         )
         sum.push(sumWithInitial)

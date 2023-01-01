@@ -5,6 +5,8 @@ import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import CartProduct from "../../components/CartProduct/CartProduct";
 
 import {createOrder} from "../../features/orders/ordersSlice";
+import {useNavigate} from "react-router-dom";
+import {clearCart} from "../../features/cartProduct/cartProductSlice";
 
 const Checkout = () => {
     const dispatch = useDispatch()
@@ -15,11 +17,14 @@ const Checkout = () => {
     const sum = cart.reduce((accumulator, object) => {
         return accumulator + object.price * object.cartQuantity;
     }, 0)
-    console.log(cart)
+    // const {user} = useSelector(state => state.user)
+    const navigate = useNavigate()
 
     const addOrder = async (e) => {
         e.preventDefault()
-        isAuth && dispatch(createOrder(cart))
+        await isAuth && dispatch(createOrder(cart))
+        await isAuth && dispatch(clearCart())
+        !isAuth && navigate('/auth')
     }
 
 

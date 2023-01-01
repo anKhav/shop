@@ -2,10 +2,10 @@ const {Order} = require("../models/models");
 const {Op} = require('sequelize')
 
 class OrderService {
-    // async getAllUserOrders(userId) {
-    //     const orders = await Order.findAll({where: {userId: userId}})
-    //     return orders
-    // }
+    async getAllUserOrders(userId) {
+        const orders = await Order.findAll({where: {userId: userId}})
+        return orders
+    }
     async getAllOrders() {
         const orders = await Order.findAll({where:{userId:{[Op.ne]: null}}})
         return orders

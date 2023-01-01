@@ -17,9 +17,10 @@ export const createOrder = createAsyncThunk(
 )
 
 export const getAllUserOrders = createAsyncThunk(
-    'orders/getAllOrders',
+    'orders/getAllUserOrders',
     async (__,{dispatch}) => {
         const response = await OrderService.getAllUserOrders()
+        console.log(response)
         dispatch(setOrders(response.data))
     }
 )
@@ -45,7 +46,7 @@ const ordersSlice = createSlice({
         setAllOrders: (state, action) => {
             state.allOrders = action.payload
         },
-        clearOrders: (state, action) => {
+        clearOrders: (state) => {
             state.orders = []
         },
 

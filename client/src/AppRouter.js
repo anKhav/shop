@@ -8,10 +8,12 @@ const AppRouter = () => {
     const isAuth = useSelector(state => state.user.isAuth)
     useEffect(() => {
     },[isAuth])
-    console.log(isAuth)
     const {user} = useSelector(state => state.user)
-    console.log(user)
     const role = user ? user.role : false
+    console.log(role)
+    console.log(localStorage)
+    console.log(user)
+    console.log(isAuth)
 
     return (
         <Routes>

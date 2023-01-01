@@ -6,6 +6,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
 import AuthService from "../../services/AuthService";
 import {SERVER_URL} from "../../utils/consts";
+import axiosApi from "../../http/axios";
 
 
 const initialState = {
@@ -21,8 +22,6 @@ export const loginUser = createAsyncThunk(
        try {
            const response = await AuthService.login(user)
            localStorage.setItem('token', response.data.accessToken)
-           localStorage.setItem('user', JSON.stringify(user))
-           document.cookie = `email=${response.data.user.email}`
            dispatch(setAuth(true))
            dispatch(setResponse(true))
            dispatch(setUser(user))
@@ -86,11 +85,13 @@ export const checkAuth = createAsyncThunk(
     'user/checkAuth',
     async (user,{dispatch}) => {
         try {
-            const response = await axios.get(`${SERVER_URL}/api/user/refresh`,{withCredentials:true})
+            // const response = await axios.get(`${SERVER_URL}/api/user/refresh`,{withCredentials:true})
+            const response = await axiosApi.get(`${SERVER_URL}/api/user/refresh`,{withCredentials:true})
             const {user} = response.data
-
-            // localStorage.setItem('token', response.data.accessToken)
-            localStorage.setItem('refreshToken', response.data.refreshToken)
+            const {accessToken} = response.data
+            localStorage.setItem('token', accessToken)
+            dispatch(setAuth(true))
+            console.log(accessToken)
             dispatch(setUser(user))
         } catch (e){
             console.log(e)
@@ -119,9 +120,9 @@ const userSlice = createSlice({
         [registrationUser.fulfilled] : (state, action) => console.log(action.payload),
         [registrationUser.pending] : () => console.log('pending'),
         [registrationUser.rejected] : (state) => state.response = null,
-        [deleteUser.fulfilled] : (state, action) => console.log('fulfilled'),
-        [deleteUser.pending] : () => console.log('pending'),
-        [deleteUser.rejected] : (state) => console.log("rejected"),
+        // [deleteUser.fulfilled] : (state, action) => console.log('fulfilled'),
+        // [deleteUser.pending] : () => console.log('pending'),
+        // [deleteUser.rejected] : (state) => console.log("rejected"),
         // [loginUser.fulfilled] : (state, action) => state.isLoading = false,
         // [loginUser.pending] : (state) => state.isLoading = true,
         // [loginUser.rejected] : (state) => state.isLoading = false,

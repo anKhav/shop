@@ -18,14 +18,20 @@ import {
     CONTACT_ROUTE, CREATE_CATEGORY_ROUTE, CREATE_PRODUCT_ROUTE, CREATE_SIZE_ROUTE, DELETE_PRODUCT_ROUTE,
     HOME_ROUTE,
     PRODUCT_ROUTE, REGISTRATION_ROUTE,
-    ORDERS, CABINET
+    ORDERS, CABINET, USER_ORDERS
 } from "./utils/consts";
+import UserOrders from "./components/UserOrders/UserOrders";
+// import Order from "./components/Orders/Order/Order";
 
 
 export const authRoutes = [
     {
         path:CABINET,
         element: <Cabinet/>
+    },
+    {
+        path:USER_ORDERS,
+        element: <UserOrders/>
     },
 ]
 export const adminRoutes = [

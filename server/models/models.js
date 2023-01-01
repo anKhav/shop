@@ -4,6 +4,7 @@ const {DataTypes} = require('sequelize')
 const User = seauelize.define('user', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     email:{type: DataTypes.STRING, unique:true},
+    // img:{type: DataTypes.STRING},
     password:{type: DataTypes.STRING},
     isActivate:{type:DataTypes.BOOLEAN, defaultValue:false},
     activationLink:{type:DataTypes.STRING},
@@ -13,7 +14,6 @@ const User = seauelize.define('user', {
 const Order = seauelize.define('order', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     products:{type:DataTypes.ARRAY(DataTypes.STRING)},
-    // products:{type:DataTypes.STRING},
 })
 
 const Basket = seauelize.define('basket', {

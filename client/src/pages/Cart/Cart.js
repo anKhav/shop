@@ -10,9 +10,9 @@ import {SERVER_URL} from "../../utils/consts";
 const Cart = () => {
     const cart = useSelector(state => state.cartProduct.cart)
     const sum = cart.reduce((accumulator, object) => {
-        return accumulator + object.price * object.cartQuantity;
+        return accumulator + object.price * object.quantity;
     }, 0)
-    console.log(cart)
+
 
 
     return (
@@ -35,8 +35,8 @@ const Cart = () => {
                                 size={product.sizes}
                                 img={`${SERVER_URL}/${product.img}`}
                                 number={product.numbers}
-                                total={Number(product.cartQuantity) * Number(product.price)}
-                                value={product.cartQuantity}
+                                total={Number(product.quantity) * Number(product.price)}
+                                value={product.quantity}
                             />
                         )
                     })
@@ -57,7 +57,7 @@ const Cart = () => {
                     <div className="total__price">${sum}</div>
                 </div>
                 <Link to={'/checkout'}>
-                    <MyBtn className='totals__btn'>Proceed to Checkout</MyBtn>
+                    <MyBtn className='totals__btn' disabled={cart.length === 0 && true}>Proceed to Checkout</MyBtn>
                 </Link>
             </div>
         </section>

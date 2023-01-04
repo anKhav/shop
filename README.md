@@ -11,6 +11,28 @@ To start the project:
 9. Install node_modules by ```npm i```
 10. Start the application by ```npm start```
 
+## Readme for using the application.
+
+  1.For creating sizes use REST Api platform Postman (or anouther) by the following route: http://localhost:5000/api/size.
+  In the request body needs to write name and sizeIndex (it is equal hundreds). Examples : 
+  {
+    "name":"XS",
+    "sizeIndex":"100"
+  }
+  
+  {
+    "name":"S",
+    "sizeIndex":"200"
+  }
+  
+  2.For registration like ADMIN user use REST Api platform Postman (or anouther) by the following route: http://localhost:5000/api/user/registration.
+  In the request body needs to write email, password, role (role default value: USER). Examples : 
+  {
+    "email":"email.gmail.com",
+    "password":"12345678",
+    "role":"ADMIN"
+  }
+
 ### Free template
 #### eCommerce Fashion Website from figma 
 #### author: 230-Jawad Ahmad

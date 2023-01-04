@@ -14,7 +14,7 @@ To start the project:
 ## Readme for using the application.
 
   1.For creating sizes use REST Api platform Postman (or anouther) by the following route: http://localhost:5000/api/size.
-  In the request body needs to write name and sizeIndex (it is equal hundreds). Examples : 
+  In the request body needs to write name and sizeIndex (it is equals hundred). Examples : 
   
   {
     "name":"XS",

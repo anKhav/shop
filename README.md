@@ -28,7 +28,7 @@ To start the project:
   2.For registration like ADMIN user use REST Api platform Postman (or anouther) by the following route: http://localhost:5000/api/user/registration.
   In the request body needs to write email, password, role (role default value: USER). Examples : 
   {
-    "email":"email.gmail.com",
+    "email":"email@gmail.com",
     "password":"12345678",
     "role":"ADMIN"
   }

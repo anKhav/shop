@@ -23,10 +23,11 @@ class UserService {
         await mailService.sendActivationMail(email, `http://localhost:5000/api/user/activate/${activationLink}`)
 
         const userDto = new UserDto(user)
+        const {img} = user
         const tokens = tokenService.generateTokens({...userDto})
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
 
-        return {...tokens, user:userDto}
+        return {...tokens, user:{...userDto,img}}
     }
 
     async activate (activationLink, next){
@@ -49,9 +50,10 @@ class UserService {
         }
         const userDto = new UserDto(user)
         const tokens = tokenService.generateTokens({...userDto})
+        const {img} = user
 
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
-        return {...tokens, user:userDto}
+        return {...tokens, user:{...userDto,img}}
     }
 
     async delete (id) {
@@ -77,12 +79,13 @@ class UserService {
             return ApiError.badRequest('Unauthorized')
         }
         const user = await User.findOne({where:{id:userData.id}})
+        const {img} = user
 
         const userDto = new UserDto(user)
         const tokens = tokenService.generateTokens({...userDto})
 
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
-        return {...tokens, user:userDto}
+        return {...tokens, user:{...userDto,img}}
     }
 
     async getAllUsers() {

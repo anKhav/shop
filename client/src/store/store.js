@@ -15,7 +15,7 @@ export const store = configureStore({
         user:userSlice,
         sizes:sizeSlice,
         categories:categorySLice,
-        orders:ordersSlice
+        orders:ordersSlice,
     },
     middleware: [
     ...getDefaultMiddleware({

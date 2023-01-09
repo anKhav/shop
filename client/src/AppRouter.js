@@ -10,10 +10,6 @@ const AppRouter = () => {
     },[isAuth])
     const {user} = useSelector(state => state.user)
     const role = user ? user.role : false
-    console.log(role)
-    console.log(localStorage)
-    console.log(user)
-    console.log(isAuth)
 
     return (
         <Routes>

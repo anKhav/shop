@@ -21,7 +21,6 @@ import {
     ORDERS, CABINET, USER_ORDERS
 } from "./utils/consts";
 import UserOrders from "./components/UserOrders/UserOrders";
-// import Order from "./components/Orders/Order/Order";
 
 
 export const authRoutes = [

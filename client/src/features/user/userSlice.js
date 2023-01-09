@@ -16,21 +16,6 @@ const initialState = {
     response:null
 }
 
-export const loginUser = createAsyncThunk(
-    'user/loginUser',
-    async (user,{dispatch}) => {
-       try {
-           const response = await AuthService.login(user)
-           localStorage.setItem('token', response.data.accessToken)
-           dispatch(setAuth(true))
-           dispatch(setResponse(true))
-           dispatch(setUser(user))
-       } catch (e){
-           await dispatch(setResponse(e.response.data.message))
-       }
-    }
-)
-
 export const registrationUser = createAsyncThunk(
     'user/registrationUser',
     async (user,{dispatch}) => {
@@ -38,11 +23,25 @@ export const registrationUser = createAsyncThunk(
             const response = await AuthService.registration(user)
             localStorage.setItem('token', response.data.accessToken)
             document.cookie = `email=${response.data.user.email}`
-            dispatch(setAuth(true))
-            dispatch(setUser(user))
+            return response.data.user
         } catch (e){
             dispatch(setResponse(e.response.data.message))
         }
+    }
+)
+export const loginUser = createAsyncThunk(
+    'user/loginUser',
+    async (user,{dispatch}) => {
+       try {
+           const response = await AuthService.login(user)
+           localStorage.setItem('token', response.data.accessToken)
+           console.log(response.data.user);
+           dispatch(setAuth(true))
+           dispatch(setResponse(true))
+           dispatch(setUser(response.data.user))
+       } catch (e){
+           await dispatch(setResponse(e.response.data.message))
+       }
     }
 )
 
@@ -85,13 +84,11 @@ export const checkAuth = createAsyncThunk(
     'user/checkAuth',
     async (user,{dispatch}) => {
         try {
-            // const response = await axios.get(`${SERVER_URL}/api/user/refresh`,{withCredentials:true})
             const response = await axiosApi.get(`${SERVER_URL}/api/user/refresh`,{withCredentials:true})
             const {user} = response.data
             const {accessToken} = response.data
             localStorage.setItem('token', accessToken)
             dispatch(setAuth(true))
-            console.log(accessToken)
             dispatch(setUser(user))
         } catch (e){
             console.log(e)
@@ -117,9 +114,14 @@ const userSlice = createSlice({
         }
     },
     extraReducers:{
-        [registrationUser.fulfilled] : (state, action) => console.log(action.payload),
+        [registrationUser.fulfilled] : (state, {payload}) => {
+            state.isAuth = true
+            state.user = payload
+        },
         [registrationUser.pending] : () => console.log('pending'),
-        [registrationUser.rejected] : (state) => state.response = null,
+        // [registrationUser.rejected] : (state, {payload}) => {
+        //     console.log(payload)
+        // },
         // [deleteUser.fulfilled] : (state, action) => console.log('fulfilled'),
         // [deleteUser.pending] : () => console.log('pending'),
         // [deleteUser.rejected] : (state) => console.log("rejected"),

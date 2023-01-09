@@ -5,6 +5,8 @@ import Categories from "../../components/Categories/Categories";
 import DeleteProduct from "./Product/DeleteProduct";
 import CreateProduct from "./Product/CreateProduct";
 
+import './Admin.scss'
+
 
 const Admin = () => {
     const {pathname} = useLocation()

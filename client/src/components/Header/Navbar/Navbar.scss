@@ -1,0 +1,12 @@
+@import "../../../styles/variables";
+
+.nav{
+  &__link{
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    &:not(:last-child){
+      margin-right: 10px;
+    }
+  }
+}

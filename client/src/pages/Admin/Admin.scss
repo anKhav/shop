@@ -1,0 +1,139 @@
+.admin{
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 50px auto;
+  min-height: calc(100vh - 580px);
+  &__header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .link{
+    color: black;
+    border-bottom: 1px solid black;
+    padding: 20px;
+    font-size: 16px;
+    &:not(:last-child){
+      margin-right: 20px;
+    }
+    &-active{
+      color: #024E82;
+      border-color: #024E82;
+    }
+  }
+  &__header{
+  }
+  &__wrapper{
+    width: 100%;
+  }
+  &__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top:50px;
+    width: 100%;
+  }
+  &__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+  }
+  &__input{
+    padding: 20px;
+    width: 100%;
+    margin: 10px;
+    outline: none;
+  }
+  &__btn{
+    margin-top: 20px;
+    border: 1px solid #024E82;
+    background-color: transparent;
+  }
+  .form{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  &__product{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+  }
+  input{
+    text-transform: none;
+    outline: none;
+    margin-bottom: 10px;
+    &:hover{
+      cursor:text;
+    }
+  }
+  .product{
+    &__title{}
+    &__info{
+      margin-top: 20px;
+    }
+    &__img{
+      width: 200px;
+    }
+  }
+  .custom-file-upload {
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+  input[type="file"] {
+    display: none;
+  }
+}
+.category{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .category__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  &__item{
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #024E82;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  &__btns{
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__btn{
+    padding: 20px;
+    width: 140px;
+    background-color: transparent;
+    border: 1px solid #024E82;
+    margin-right: 10px;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+}
+.products-create{
+  width: 100%;
+  .wrapper{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+}

@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
 import Products from "../../components/Products/Products";
 
+import './Home.scss'
+
 
 const Benefit = ({src, alt, title, descr}) => {
     return (

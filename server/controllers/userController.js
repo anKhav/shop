@@ -2,6 +2,9 @@ const userService = require('../service/userService')
 const orderService = require('../service/orderService')
 const ApiError = require('../error/ApiError')
 const {validationResult} = require('express-validator')
+const uuid = require("uuid");
+const path = require("path");
+
 
 class UserController {
     async registration(req, res, next) {
@@ -10,6 +13,7 @@ class UserController {
             if (!errors.isEmpty()){
                 return next(ApiError.badRequest('Validation Error', errors.array()))
             }
+            const img = `${process.env.SERVER_URL}/pngfind.com-default-image-png-6764065.png`
             const {email, password, role} = req.body
             const userData = await userService.registration(email, password, role, next)
             res.cookie('refreshToken',userData.refreshToken, {maxAge: 30 * 24 * 60 * 60 *1000, httpOnly:true} )
@@ -86,7 +90,7 @@ class UserController {
         try {
             const {id} = req.user
             const order = req.body
-
+            console.log(req);
             const orders = await orderService.createOrder(order, id)
             return res.json(orders)
         } catch (e){

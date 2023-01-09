@@ -1,8 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import MyBtn from "../../components/UI/MyBtn/MyBtn";
+import React, {useCallback, useEffect, useState} from 'react';
 import {Link, useLocation, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
+import debounce from 'lodash.debounce'
+
 import {loginUser, registrationUser} from "../../features/user/userSlice";
+
+import MyBtn from "../../components/UI/MyBtn/MyBtn";
+
+import './Auth.scss'
+import useDebounce from "../../hooks/useDebounce";
 
 const Auth = () => {
     const res = useSelector(state => state.user.response)
@@ -12,6 +18,7 @@ const Auth = () => {
     const [user, setUser] = useState({email:'',password:''})
     const navigate = useNavigate()
     const [error, setError] = useState(null)
+    console.log(user)
 
 
     useEffect(() => {
@@ -38,6 +45,8 @@ const Auth = () => {
     }
 
 
+
+
     return (
         <div className='section-inner auth'>
             <h2 className="auth__title">{isLogin ? 'Login' : 'Sign In'}</h2>
@@ -45,11 +54,11 @@ const Auth = () => {
                 <form className='auth__form'>
                     <div className="email">
                         <label htmlFor="email-input" className="email__label">Email</label>
-                        <input value={user.email} onChange={(e) => setUser({...user, email:e.target.value})} type="email" className="email__input" id="email-input"/>
+                        <input  onChange={(e) => setUser({...user, email:e.target.value})} type="email" className="email__input" id="email-input"/>
                     </div>
                     <div className="password">
                         <label htmlFor="password-input" className="password__label">Password</label>
-                        <input value={user.password} onChange={(e) => setUser({...user, password:e.target.value})} type="password" className="password__input" id="password-input"/>
+                        <input  onChange={(e) => setUser({...user, password:e.target.value})} type="password" className="password__input" id="password-input"/>
                     </div>
                     {res !==null && <div className='message--error'>{res}</div>}
                     <div className="auth__footer">

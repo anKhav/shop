@@ -4,7 +4,7 @@ const {DataTypes} = require('sequelize')
 const User = seauelize.define('user', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     email:{type: DataTypes.STRING, unique:true},
-    // img:{type: DataTypes.STRING},
+    img:{type: DataTypes.STRING, defaultValue:`http://localhost:5000/avatar.png`},
     password:{type: DataTypes.STRING},
     isActivate:{type:DataTypes.BOOLEAN, defaultValue:false},
     activationLink:{type:DataTypes.STRING},
@@ -28,9 +28,10 @@ const Product = seauelize.define('product', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     name:{type: DataTypes.STRING, allowNull:false},
     price:{type: DataTypes.INTEGER, allowNull: false},
-    rating:{type: DataTypes.INTEGER, defaultValue: 0},
+    rating:{type: DataTypes.STRING, defaultValue: 0},
     img:{type: DataTypes.STRING, allowNull: false},
     sizes:{type:DataTypes.ARRAY(DataTypes.STRING)},
+    tags:{type:DataTypes.STRING},
     categories:{type:DataTypes.ARRAY(DataTypes.STRING)}
 })
 
@@ -47,7 +48,7 @@ const Category = seauelize.define('category', {
 
 const Rating = seauelize.define('rating', {
     id:{type: DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
-    rate:{type: DataTypes.INTEGER, allowNull:false},
+    rate:{type: DataTypes.INTEGER, allowNull:false, defaultValue:0},
 })
 
 

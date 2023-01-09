@@ -58,8 +58,8 @@ const CreateProduct = () => {
         }
         return newProduct
     }
-    const sendProduct = () => {
-        dispatch(createProduct(createNewProduct()))
+    const sendProduct = async () => {
+        await dispatch(createProduct(createNewProduct()))
         window.location.reload()
     }
     const products = useSelector(state => state.products.products)

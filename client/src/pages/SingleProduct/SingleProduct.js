@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 
+import { ThreeCircles } from  'react-loader-spinner'
+
 import Dropdown from "../../components/Dropdown/Dropdown";
 import Rating from '../../components/Products/Product/Rating/Rating'
 import MyBtn from "../../components/UI/MyBtn/MyBtn";
@@ -10,14 +12,19 @@ import {getOneProduct} from "../../features/product/productSlice";
 
 import {setCartProduct} from "../../features/cartProduct/cartProductSlice";
 import {SERVER_URL} from "../../utils/consts";
+
 const SingleProduct = () => {
 
-    const {id} = useParams()
+    const id = Number(useParams().id)
+
     const dispatch = useDispatch()
+    const product = useSelector(state => state.product.product)
+    console.log(product);
+
     useEffect( () => {
         dispatch(getOneProduct(id))
+        console.log(product)
     },[dispatch,id])
-    const product = useSelector(state => state.product.product.product)
 
     const [selectedSize, setSelectedSize] = useState('Select Size')
 
@@ -25,8 +32,6 @@ const SingleProduct = () => {
         e.preventDefault()
         const productToCart = {...product, sizes: selectedSize}
         dispatch(setCartProduct(productToCart))
-        console.log(e.target)
-        console.log(productToCart);
     }
     const firstLetterToUpperCase = (word) => {
         const arr = [...word]
@@ -36,7 +41,7 @@ const SingleProduct = () => {
 
     return (
         <div>
-            { product ?
+            { product !== null ?
                 (
                     <section className="SingleProduct">
                         <div className="section-inner product">
@@ -84,7 +89,21 @@ const SingleProduct = () => {
                         </div>
                     </section>
                 ):
-            <div>error</div>}
+                <div className='SingleProduct--empty'>
+                    <ThreeCircles
+                        height="100"
+                        width="100"
+                        color="#4fa94d"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                        ariaLabel="three-circles-rotating"
+                        outerCircleColor="#d6763c"
+                        innerCircleColor="#ffffff"
+                        middleCircleColor="#d6763c"
+                    />
+                </div>
+            }
         </div>
     );
 };

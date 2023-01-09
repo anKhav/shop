@@ -10,7 +10,7 @@ export const getCategories = createAsyncThunk(
     'category/getCategories',
     async (__,{ dispatch}) => {
         const res = await axios.get(`${SERVER_URL}/api/category`)
-        dispatch(setCategories(res.data))
+        return res.data
     }
 )
 export const createCategory = createAsyncThunk(
@@ -23,7 +23,7 @@ export const createCategory = createAsyncThunk(
 export const deleteCategory = createAsyncThunk(
     'category/deleteCategory',
     async (obj,{dispatch}) => {
-        await axios.delete(`${SERVER_URL}/api/category`,{data:obj})
+        const res = await axios.delete(`${SERVER_URL}/api/category`,{data:obj})
         dispatch(delCategory({obj}))
     }
 )
@@ -33,9 +33,6 @@ const categorySlice = createSlice({
     name:'category',
     initialState,
     reducers:{
-        setCategories: (state,action) => {
-            state.categories = action.payload
-        },
         addCategories: (state,action) => {
             state.categories.push(action.payload)
         },
@@ -44,12 +41,16 @@ const categorySlice = createSlice({
         },
     },
     extraReducers:{
-        [getCategories.fulfilled] : () => console.log('fulfilled'),
+        [getCategories.fulfilled] : (state, {payload}) => {
+            state.categories = payload
+        },
         [getCategories.pending] : () => console.log('pending'),
         [getCategories.rejected] : () => console.log('rejected'),
+
         [createCategory.fulfilled] : () => console.log('fulfilled'),
         [createCategory.pending] : () => console.log('pending'),
         [createCategory.rejected] : () => console.log('rejected'),
+
         [deleteCategory.fulfilled] : () => console.log('fulfilled'),
         [deleteCategory.pending] : () => console.log('pending'),
         [deleteCategory.rejected] : () => console.log('rejected')

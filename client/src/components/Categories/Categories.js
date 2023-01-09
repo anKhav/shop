@@ -18,13 +18,13 @@ const Categories = () => {
     const creatCategory = (e) => {
         e.preventDefault()
         dispatch(createCategory(category))
-        window.location.reload(false)
+        window.location.reload()
     }
 
-    const delCategory = (e) => {
+    const delCategory = async (e) => {
         e.preventDefault()
-        dispatch(deleteCategory(category))
-        window.location.reload(false)
+        await dispatch(deleteCategory(category))
+        window.location.reload()
     }
     const chooseCategory = (e) => {
         setCategory({name:e.target.innerText})

@@ -1,7 +1,14 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {useSelector} from "react-redux";
+
 import Menu from "../../Menu/Menu";
+
+
+import './RightNav.scss'
+import Burger from "../../../Burger/Burger";
+import UserIcon from "./UserIcon/UserIcon";
+import CartIcon from "./CartIcon/CartIcon";
 
 
 const RightNav = () => {
@@ -27,13 +34,16 @@ const RightNav = () => {
             {user ?
                 <div className='RightNav__wrapper'>
                     {role === "ADMIN" ? <Link to='/admin'>Admin</Link> : null}
-                    <Link className='right-nav__icon' to={isAuth ? '/cabinet' : '/auth'}><img src='/img/user_icon.svg' alt='user icon'/></Link>
+                    <Link className='right-nav__icon' to={isAuth ? '/cabinet' : '/auth'}>
+                        <UserIcon/>
+                    </Link>
                     <Link className='cart__link' to='/cart'>
-                        <img src='/img/shopping-bag.svg' alt='cart icon' />
+                        <CartIcon/>
                         {cart.length === 0 ? false :
                             <span className="cart__number">{sum}</span>}
                     </Link>
-                    <Menu/>
+                    <Burger/>
+                    {/*<Menu/>*/}
                 </div>:
                 <div className='RightNav__wrapper'>
                     <Link className='right-nav__icon' to='/auth'><img src='/img/user_icon.svg' alt='user icon'/></Link>
@@ -42,7 +52,8 @@ const RightNav = () => {
                         {cart.length === 0 ? false :
                             <span className="cart__number">{sum}</span>}
                     </Link>
-                    <Menu/>
+                    <Burger/>
+                    {/*<Menu/>*/}
                 </div>
             }
         </div>

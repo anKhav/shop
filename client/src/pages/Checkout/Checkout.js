@@ -15,7 +15,7 @@ const Checkout = () => {
 
     const cart = useSelector(state => state.cartProduct.cart)
     const sum = cart.reduce((accumulator, object) => {
-        return accumulator + object.price * object.cartQuantity;
+        return accumulator + object.price * object.quantity;
     }, 0)
     // const {user} = useSelector(state => state.user)
     const navigate = useNavigate()

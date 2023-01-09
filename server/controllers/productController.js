@@ -2,19 +2,21 @@ const uuid = require('uuid')
 const path = require('path')
 const {Product} = require('../models/models')
 const ApiError = require('../error/ApiError')
+const ratingController = require('../controllers/ratingController')
+const ratingService = require('../service/ratingService')
+const orderService = require("../service/orderService");
 class ProductController {
     async create(req, res, next) {
         try {
-            let {name, price} = req.body
+            let {name, price, tags} = req.body
             let sizes = req.body.sizes.split(',')
             let categories = req.body.categories.split(',')
             const {img} = req.files
             let fileName = uuid.v4() + '.jpg'
             img.mv(path.resolve(__dirname,'..', 'static', fileName))
 
-
             const product = await Product.create({
-                name, price, img: fileName, sizes, categories
+                name, price, img: fileName, sizes, categories, tags
             })
             return res.json(product)
         } catch (e) {
@@ -54,15 +56,19 @@ class ProductController {
         }
         return res.json(products)
     }
-    async getOne(req, res) {
-        const id = Number(req.params.id)
+    async getOne(req, res, next) {
 
-        let product = await Product.findOne(
-            {
-                where:id,
-            }
-        )
-        return res.json({product})
+        try {
+            const id = Number(req.params.id)
+
+            const rating = await ratingService.getAllRatingsOfProduct(id)
+            let product = await Product.findOne({where:id})
+            product.rating = rating
+            await product.save()
+            return res.json(product)
+        } catch (e){
+            return ApiError.badRequest('Error')
+        }
     }
 }
 module.exports = new  ProductController()

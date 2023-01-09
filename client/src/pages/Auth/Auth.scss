@@ -1,0 +1,91 @@
+.auth{
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin: 50px auto;
+  width: 30%;
+  height: 100%;
+  border: 1px solid #024E82;
+  &__title{
+    font-size: 36px;
+    line-height: 42px;
+  }
+  &__content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    //align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  &__form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .email{
+      margin: 0 auto;
+      width: 75%;
+      min-width: 300px;
+      position: relative;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      &__label{
+        position: absolute;
+        left: 25px;
+        top: 0;
+      }
+      &__input{
+        outline: none;
+        padding: 10px;
+      }
+    }
+    .password{
+      margin: 0 auto;
+      width: 75%;
+      min-width: 300px;
+      position: relative;
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      &__label{
+        position: absolute;
+        left: 25px;
+        top: 0;
+      }
+      &__input{
+        outline: none;
+        padding: 10px;
+      }
+    }
+  }
+  &__btn{
+    background-color: #024E82;
+    font-size: 14px;
+    font-weight: normal;
+    border-color: transparent;
+    color: white;
+    margin-right: 20px;
+  }
+  &__footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .link{
+      color: #024E82;
+    }
+    div{
+      margin-right: 50px;
+    }
+  }
+  .message{
+    &--error{
+      margin-bottom: 20px;
+      color: red;
+    }
+  }
+}

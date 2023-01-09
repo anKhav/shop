@@ -1,0 +1,55 @@
+.cabinet{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+  &__profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 0;
+    .info{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      margin-right: 40px;
+      &__name-surname{
+        margin-bottom: 20px;
+      }
+      &__email{
+        margin-bottom: 20px;
+      }
+    }
+    .avatar{
+      width: 200px;
+      height: 200px;
+      border-radius: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img{
+        border-radius: 100%;
+        width: 100%;
+        height: 100%;
+      }
+
+    }
+  }
+  &__settings{
+    flex: 1 1 0;
+  }
+  &__btn{
+    padding:10px 20px;
+    background-color: transparent;
+    border: 1px solid #3a3939;
+    transition: .4s;
+    margin-bottom: 20px;
+    &:hover{
+      cursor: pointer;
+      background-color: #3a3939;
+      color: white;
+      transition: .4s;
+    }
+  }
+}

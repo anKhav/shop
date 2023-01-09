@@ -1,9 +1,13 @@
 import React, {useLayoutEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {checkAuth, deleteUser, logoutUser} from "../../features/user/userSlice";
 import {Link, useNavigate} from "react-router-dom";
-import {clearOrders, getAllUserOrders} from "../../features/orders/ordersSlice";
+
 import Orders from "../../components/Orders/Orders";
+
+import {clearOrders, getAllUserOrders} from "../../features/orders/ordersSlice";
+import {checkAuth, deleteUser, logoutUser} from "../../features/user/userSlice";
+
+import './Cabinet.scss'
 
 const Cabinet = () => {
     const fileReader = new FileReader()
@@ -13,6 +17,7 @@ const Cabinet = () => {
     const [selectedImgUrl, setSelectedImgUrl] = useState()
     const [image, setImage] = useState()
     const {user} = useSelector(state => state.user)
+    const user1 = useSelector(state => state.user)
 
     fileReader.onloadend = () => {
         setSelectedImgUrl(fileReader.result)
@@ -24,7 +29,6 @@ const Cabinet = () => {
 
         setImage(file)
         fileReader.readAsDataURL(file)
-        console.log(file)
     }
 
     useLayoutEffect(() => {
@@ -73,7 +77,7 @@ const Cabinet = () => {
                     </Link>
                 </div>
                 <div className="avatar">
-                    <img src={selectedImgUrl} alt=""/>
+                    <img src={selectedImgUrl || user.img} alt=""/>
                 </div>
             </div>
             <div className='cabinet__settings'>

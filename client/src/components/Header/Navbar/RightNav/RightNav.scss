@@ -1,0 +1,11 @@
+@import "../../../../styles/variables";
+
+.right-nav__icon{
+  &:not(:last-child){
+    margin-right: 25px;
+  }
+  img{
+    width: 24px;
+    height: 24px;
+  }
+}
